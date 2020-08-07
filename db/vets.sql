@@ -35,18 +35,18 @@ CREATE TABLE records (
     animal_id INT REFERENCES animals(id)
 );
 
-INSERT INTO vets (first_name, last_name) VALUES ('John', 'Smith');
-INSERT INTO vets (first_name, last_name) VALUES ('Linda', 'Bridges');
+-- INSERT INTO vets (first_name, last_name) VALUES ('John', 'Smith');
+-- INSERT INTO vets (first_name, last_name) VALUES ('Linda', 'Bridges');
 
-INSERT INTO owners (first_name, last_name, tel, email) VALUES ('Kevin', 'Jones', '07676 767676', 'kevin@email.com');
-INSERT INTO owners (first_name, last_name, tel, email) VALUES ('Steve', 'Baker', '07762 919382', 'steve@email.com');
+-- INSERT INTO owners (first_name, last_name, tel, email) VALUES ('Kevin', 'Jones', '07676 767676', 'kevin@email.com');
+-- INSERT INTO owners (first_name, last_name, tel, email) VALUES ('Steve', 'Baker', '07762 919382', 'steve@email.com');
 
-INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Fluff', '14-04-2018', 'Cat', 1, 1, '06-08-2020', true);
-INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Floof', '23-07-2017', 'Dog', 2, 2, '06-08-2020', true);
-INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Adrian', '01-06-2010', 'Chameleon', 1, 2, '05-08-2020', true);
+-- INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Fluff', '14-04-2018', 'Cat', 1, 1, '06-08-2020', true);
+-- INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Floof', '23-07-2017', 'Dog', 2, 2, '06-08-2020', true);
+-- INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Adrian', '01-06-2010', 'Chameleon', 1, 2, '05-08-2020', true);
 
-INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Cat is sick', 1);
-INSERT INTO records (date, entry, animal_id) VALUES ('08-08-2020', 'Cat is still sick', 1);
-INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Dog is ill', 2);
-INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Chameleon can''t change colour', 3);
+-- INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Cat is sick', 1);
+-- INSERT INTO records (date, entry, animal_id) VALUES ('08-08-2020', 'Cat is still sick', 1);
+-- INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Dog is ill', 2);
+-- INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Chameleon can''t change colour', 3);
 
