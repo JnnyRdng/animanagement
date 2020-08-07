@@ -3,8 +3,6 @@ from db.run_sql import run_sql
 import repositories.vet_repository as vet_repo
 import repositories.owner_repository as owner_repo
 
-from models.vet import Vet
-from models.owner import Owner
 from models.animal import Animal
 
 
