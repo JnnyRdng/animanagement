@@ -21,16 +21,27 @@ def select(id):
 
 
 def select_all():
-    pass
+    vets = []
+    sql = "SELECT * FROM vets"
+    results = run_sql(sql)
+    for row in results:
+        vet = Vet(row["first_name"], row["last_name"], row["id"])
+        vets.append(vet)
+    return vets
 
 
 def delete(id):
-    pass
+    sql = "DELETE FROM vets WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 
 def delete_all():
-    pass
+    sql = "DELETE FROM vets"
+    run_sql(sql)
 
 
 def update(vet):
-    pass
+    sql = "UPDATE vets SET (first_name, last_name) = (%s, %s) WHERE id = %s"
+    values = [vet.first_name, vet.last_name, vet.id]
+    run_sql(sql, values)

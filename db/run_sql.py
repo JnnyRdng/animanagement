@@ -2,7 +2,7 @@ import psycopg2
 import psycopg2.extras as ext
 
 
-def run_sql(sql, values):
+def run_sql(sql, values=None):
     conn = None
     results = []
     try:
@@ -17,4 +17,4 @@ def run_sql(sql, values):
     finally:
         if conn is not None:
             conn.close()
-        return results
+    return results
