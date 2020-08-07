@@ -1,0 +1,91 @@
+#padding: 10
+#spacing: 80
+#arrowSize: 0.5
+#bendSize: 1
+#title: vet_surgery
+#edgeMargin: 10
+#leading: 2
+#fillArrows: true
+
+#ranker: tight-tree
+#background: #fdf6e3
+#direction: right
+
+[<Animal>|
+  id: Int;
+  name: String;
+  dob: String;
+  type: String;
+  owner: Owner;
+  notes: String;
+  date_admitted: String
+]
+
+[<Owner>|
+  id: Int;
+  name: String;
+  address: Address;
+  tel: String;
+  email: String
+]
+
+[<Address>|
+  number: String;
+  street: String;
+  city: String;
+  postcode: String
+]
+
+[<Vet>|
+id: Int;
+name: String
+
+]
+
+[<Owner>] -> 1..* [<Animal>]
+[<Owner>] -- (extension) [<Address>]
+[<Vet>] -> [<Animal>]
+
+[<database>vet_surgery| psql]
+[vets|
+  id: SERIAL PRIMARY KEY;
+  name: VARCHAR(255)
+]
+[animals|
+  id: SERIAL PRIMARY KEY;
+  name: VARCHAR(255);
+  dob: VARCHAR(255);
+  type: VARCHAR(255);
+  owner_id: INT REFERENCES owners(id);
+  vet_id: INT REFERENCES vets(id);
+  medical_record: TEXT
+]
+
+[records|
+  id: SERIAL PRIMARY KEY;
+  date: VARCHAR(24);
+  detail: TEXT;
+  animal_id: INT REFERENCES animals(id)
+]
+[addresses|
+  id: SERIAL PRIMARY KEY;
+  date: VARCHAR(24);
+  detail: TEXT;
+  owner_id: INT REFERENCES owners(id)
+]
+
+[owners|
+  id: SERIAL PRIMARY KEY;
+  first_name: VARCHAR(255);
+  last_name: VARCHAR(255);
+  address_id: INT REFERENCES addresses(id);
+  tel: VARCHAR(255)
+]
+[vet_surgery] - [vets]
+[vet_surgery] - [animals]
+[vet_surgery] - [owners]
+
+[vets] 0..10 -> [animals]
+[animals] 1..10 <- [owners]
+[animals] <:-- (extension)[records]
+[owners] <:-- (extension) [addresses]
