@@ -32,7 +32,7 @@ CREATE TABLE records (
     id SERIAL PRIMARY KEY,
     date VARCHAR(255),
     entry TEXT,
-    animal_id INT REFERENCES animals(id)
+    animal_id INT REFERENCES animals(id) ON DELETE CASCADE
 );
 
 -- INSERT INTO vets (first_name, last_name) VALUES ('John', 'Smith');
