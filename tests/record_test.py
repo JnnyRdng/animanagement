@@ -1,11 +1,20 @@
 import unittest
 
+from models.vet import Vet
+from models.owner import Owner
+from models.animal import Animal
 from models.record import Record
 
 
 class TestRecord(unittest.TestCase):
     def setUp(self):
-        self.record = Record("13-04-2020", "Cat is sick.")
+        self.vet = Vet("Mark", "Bridges")
+        self.owner = Owner("Kevin", "Stevens", "015825536874", "kevin@mail.com")
+        self.animal = Animal(
+            "Fluff", "04-01-2018", "Dog", self.owner, self.vet, "06-08-2020"
+        )
+        self.animal.id = 763
+        self.record = Record("13-04-2020", "Cat is sick.", self.animal)
 
     def test_record_has_date(self):
         expected = "13-04-2020"
@@ -15,6 +24,16 @@ class TestRecord(unittest.TestCase):
     def test_record_has_entry(self):
         expected = "Cat is sick."
         actual = self.record.entry
+        self.assertEqual(expected, actual)
+
+    def test_record_has_animal_name(self):
+        expected = "Fluff"
+        actual = self.record.animal.name
+        self.assertEqual(expected, actual)
+
+    def test_record_has_animal_id(self):
+        expected = 763
+        actual = self.record.animal.id
         self.assertEqual(expected, actual)
 
     def test_record_has_None_id(self):
