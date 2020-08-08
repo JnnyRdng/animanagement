@@ -87,3 +87,14 @@ def update(animal):
         animal.id,
     ]
     run_sql(sql, values)
+
+
+def animals_by_vet(vet):
+    animals = []
+    sql = "SELECT * FROM animals WHERE vet_id = %s"
+    values = [vet.id]
+    results = run_sql(sql, values)
+    for row in results:
+        animal = select(row["id"])
+        animals.append(animal)
+    return animals
