@@ -9,12 +9,11 @@
     <aside>
       {% if animals|length > 0 %}
       <h3>Animals in {{vet.first_name}}'s care</h3>
-
       {% for animal in animals %}
       <section>
         <h4>{{ animal.name }}</h4>
         <h5>{{ animal.species.capitalize() }}</h5>
-        <h5>{{ animal.date_admitted }}</h5>
+        <h5>Date admitted: {{ animal.date_admitted }}</h5>
         <a href="/animals/{{animal.id}}">View animal</a>
       </section>
       {% endfor %}

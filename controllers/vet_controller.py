@@ -47,20 +47,24 @@ def create():
 @vet_blueprint.route("/vets/<id>/edit")
 def edit(id):
     vet = vet_repository.select(id)
-    pass
+    return render_template("vets/edit.html", title="Edit Vet", vet=vet)
 
 
 # update
 # /vets/<id> POST
 @vet_blueprint.route("/vets/<id>", methods=["POST"])
 def update(id):
-    vet = vet_repository.select(id)
-    pass
+    # vet = vet_repository.select(id)
+    first_name = request.form["first_name"]
+    last_name = request.form["last_name"]
+    vet = Vet(first_name, last_name, id)
+    vet_repository.update(vet)
+    return redirect(f"/vets/{id}")
 
 
-# delete
-# /vets/<id>/delete POST
-@vet_blueprint.route("/vets/<id>/delete")
-def delete(id):
-    vet_repository.delete(id)
-    return render_template("/vets")
+# # delete
+# # /vets/<id>/delete POST
+# @vet_blueprint.route("/vets/<id>/delete")
+# def delete(id):
+#     vet_repository.delete(id)
+#     return render_template("/vets")

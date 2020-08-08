@@ -1,0 +1,14 @@
+{% extends 'vets/base.html' %}
+
+
+{% block content %}
+<article class="edit">
+  <form action="/vets/{{ vet.id }}" method="post">
+    <label for="first_name">First name:</label>
+    <input type="text" name="first_name" required autofocus value="{{ vet.first_name }}">
+    <label for="last_name">Last name:</label>
+    <input type="text" name="last_name" required value="{{ vet.last_name }}">
+    <input type="submit">
+  </form>
+</article>
+{% endblock content %}
