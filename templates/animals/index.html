@@ -1,0 +1,20 @@
+{% extends 'animals/base.html' %}
+
+
+{% block content %}
+<article class="show-all">
+  {% for animal in animals %}
+  <section class="animal-card">
+    <div>
+      <img src="{{ url_for('static', filename='img/placeholder.png') }}">
+      <span>{{ animal.name }}</span>
+      <span>{{ animal.species.capitalize() }}</span>
+    </div>
+    <div>
+      <a href="/animals/{{ animal.id }}">Show details</a>
+    </div>
+
+  </section>
+  {% endfor %}
+</article>
+{% endblock content %}

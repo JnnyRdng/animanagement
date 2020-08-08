@@ -53,3 +53,14 @@ def update(record):
     sql = "UPDATE records SET (date, entry, animal_id) = (%s, %s, %s) WHERE id = %s"
     values = [record.date, record.entry, record.animal.id, record.id]
     run_sql(sql, values)
+
+
+def records_by_animal(animal):
+    records = []
+    sql = "SELECT * FROM records WHERE animal_id = %s"
+    values = [animal.id]
+    results = run_sql(sql, values)
+    for row in results:
+        record = select(row["id"])
+        records.append(record)
+    return records
