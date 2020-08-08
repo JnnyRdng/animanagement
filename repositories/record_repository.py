@@ -1,8 +1,8 @@
 from db.run_sql import run_sql
 
-import repositories.vet_repository as vet_repo
-import repositories.owner_repository as owner_repo
-import repositories.animal_repository as animal_repo
+import repositories.vet_repository as vet_repository
+import repositories.owner_repository as owner_repository
+import repositories.animal_repository as animal_repository
 
 from models.record import Record
 
@@ -22,7 +22,7 @@ def select(id):
     values = [id]
     row = run_sql(sql, values)[0]
     if row is not None:
-        animal = animal_repo.select(row["animal_id"])
+        animal = animal_repository.select(row["animal_id"])
         record = Record(row["date"], row["entry"], animal, row["id"])
     return record
 
@@ -32,7 +32,7 @@ def select_all():
     sql = "SELECT * FROM records"
     results = run_sql(sql)
     for row in results:
-        animal = animal_repo.select(row["id"])
+        animal = animal_repository.select(row["id"])
         record = Record(row["date"], row["entry"], animal, row["id"])
         records.append(record)
     return records
