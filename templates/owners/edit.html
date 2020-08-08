@@ -1,0 +1,18 @@
+{% extends 'owners/base.html' %}
+
+
+{% block content %}
+<article class="edit">
+  <form action="/owners/{{ owner.id }}" method="post">
+    <label for="first_name">First name:</label>
+    <input type="text" name="first_name" required autofocus value="{{ owner.first_name }}">
+    <label for="last_name">Last name:</label>
+    <input type="text" name="last_name" required value="{{ owner.last_name }}">
+    <label for="last_name">Telephone:</label>
+    <input type="tel" name="tel" required value="{{ owner.tel }}">
+    <label for="last_name">Email:</label>
+    <input type="email" name="email" required value="{{ owner.email }}">
+    <input type="submit">
+  </form>
+</article>
+{% endblock content %}

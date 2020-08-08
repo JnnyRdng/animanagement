@@ -29,8 +29,10 @@ owner_repository.save(owner_2)
 
 pet_1 = Animal("Floof", "01-02-1987", "cat", owner_1, vet_1, "05-08-2020")
 pet_2 = Animal("Fluff", "03-04-1958", "dog", owner_2, vet_1, "05-08-2020")
+pet_3 = Animal("Puff", "03-04-1958", "dog", owner_2, vet_3, "05-08-2020")
 animal_repository.save(pet_1)
 animal_repository.save(pet_2)
+animal_repository.save(pet_3)
 
 record_1 = Record("06-08-2020", "Cat is ill", pet_1)
 record_2 = Record("07-08-2020", "Cat is still ill", pet_1)

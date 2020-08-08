@@ -1,0 +1,19 @@
+{% extends 'owners/base.html' %}
+
+
+{% block content %}
+<article class="show-all">
+  {% for owner in owners %}
+  <section class="owner-card">
+    <div>
+      <img src="{{ url_for('static', filename='img/placeholder.png') }}">
+      <span>{{ owner.first_name }}</span>
+      <span>{{ owner.last_name }}</span>
+      <div>
+        <a href="/owners/{{ owner.id }}">Show details</a>
+      </div>
+
+  </section>
+  {% endfor %}
+</article>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'owners/base.html' %}
+
+
+{% block content %}
+<article class="show-single">
+  <section>
+    <h2>{{ owner.first_name }} {{ owner.last_name }}</h2>
+    <p>Telephone: {{ owner.tel }}</p>
+    <p>email: {{ owner.email }}</p>
+    <a href="/owners/{{owner.id}}/edit">Edit details</a>
+    <aside>
+      {% if animals|length > 0 %}
+      <h3>{{owner.first_name}}'s animals</h3>
+      {% for animal in animals %}
+      <section>
+        <h4>{{ animal.name }}</h4>
+        <h5>{{ animal.species.capitalize() }}</h5>
+        <h5>Date admitted: {{ animal.date_admitted }}</h5>
+        <a href="/animals/{{animal.id}}">View animal</a>
+      </section>
+      {% endfor %}
+      {% else %}
+      <section>
+        <h3>{{owner.first_name}} hasn't registered any animals yet</h3>
+      </section>
+      {% endif %}
+    </aside>
+  </section>
+</article>
+{% endblock content %}

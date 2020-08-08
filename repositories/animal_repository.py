@@ -98,3 +98,14 @@ def animals_by_vet(vet):
         animal = select(row["id"])
         animals.append(animal)
     return animals
+
+
+def animals_by_owner(owner):
+    animals = []
+    sql = "SELECT * FROM animals WHERE owner_id = %s"
+    values = [owner.id]
+    results = run_sql(sql, values)
+    for row in results:
+        animal = select(row["id"])
+        animals.append(animal)
+    return animals
