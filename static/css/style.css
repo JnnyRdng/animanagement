@@ -11,6 +11,16 @@ body {
 
 body>header {
     background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: auto 3fr 5fr;
+    column-gap: 20px;
+    align-items: center;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
 }
 
 body>main {

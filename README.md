@@ -1,10 +1,12 @@
 # Brief
 
-Build software to help a vet surgery manage their vets and animals
+The brief is to create software to help a vet surgery manage their vets and animals. This is a full-stack web app built with flask that uses RESTful routes and CRUD actions.
 
-# Build notes
+---
 
-Dependencies: Flask, psycopg2
+### Build notes
+
+#### Dependencies: Flask, psycopg2, postgres
 
 In Terminal:
 
