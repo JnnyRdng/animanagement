@@ -72,4 +72,4 @@ def update(id):
 # @owner_blueprint.route("/owners/<id>/delete")
 # def delete(id):
 #     owner_repository.delete(id)
-#     return render_template("/owners")
+#     return redirect("/owners")
