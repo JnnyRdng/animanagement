@@ -3,6 +3,27 @@
 
 {% block content %}
 <article class="show-single">
+  <section>
+    <h2>{{ vet.first_name }} {{ vet.last_name }}</h2>
+    <a href="/vets/{{vet.id}}/edit">Edit details</a>
+    <aside>
+      {% if animals|length > 0 %}
+      <h3>Animals in {{vet.first_name}}'s care</h3>
 
+      {% for animal in animals %}
+      <section>
+        <h4>{{ animal.name }}</h4>
+        <h5>{{ animal.species.capitalize() }}</h5>
+        <h5>{{ animal.date_admitted }}</h5>
+        <a href="/animals/{{animal.id}}">View animal</a>
+      </section>
+      {% endfor %}
+      {% else %}
+      <section>
+        <h3>No animals in {{vet.first_name}}'s care right now</h3>
+      </section>
+      {% endif %}
+    </aside>
+  </section>
 </article>
 {% endblock content %}
