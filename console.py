@@ -16,7 +16,11 @@ vet_repository.delete_all()
 owner_repository.delete_all()
 
 vet_1 = Vet("Sandra", "Jones")
+vet_2 = Vet("Sarah", "Johnson")
+vet_3 = Vet("Steve", "Slater")
 vet_repository.save(vet_1)
+vet_repository.save(vet_2)
+vet_repository.save(vet_3)
 
 owner_1 = Owner("Jam", "Jimson", "07162626243", "jim@email.com")
 owner_2 = Owner("Jim", "Jamson", "07162626243", "jim@email.com")

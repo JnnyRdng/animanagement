@@ -1,0 +1,19 @@
+{% extends 'vets/base.html' %}
+
+{% block content %}
+<article class="show-all">
+  {% for vet in vets %}
+  <section class="vet-card">
+    <div>
+      <img src="{{ url_for('static', filename='img/placeholder.png') }}">
+      <span>{{ vet.first_name }}</span>
+      <span>{{ vet.last_name }}</span>
+    </div>
+    <div>
+      <a href="/vets/{{ vet.id }}">Show details</a>
+    </div>
+
+  </section>
+  {% endfor %}
+</article>
+{% endblock content %}
