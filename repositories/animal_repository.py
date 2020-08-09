@@ -7,11 +7,12 @@ from models.animal import Animal
 
 
 def save(animal):
-    sql = "INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id"
+    sql = "INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_admitted, checked_in) VALUES (%s, %s ,%s, %s, %s, %s, %s, %s) RETURNING id"
     values = [
         animal.name,
         animal.dob,
         animal.species,
+        animal.breed,
         animal.owner.id,
         animal.vet.id,
         animal.date_admitted,
@@ -33,6 +34,7 @@ def select(id):
             row["name"],
             row["dob"],
             row["species"],
+            row["breed"],
             owner,
             vet,
             row["date_admitted"],
@@ -53,6 +55,7 @@ def select_all():
             row["name"],
             row["dob"],
             row["species"],
+            row["breed"],
             owner,
             vet,
             row["date_admitted"],
@@ -75,11 +78,12 @@ def delete_all():
 
 
 def update(animal):
-    sql = "UPDATE animals SET (name, dob, species, owner_id, vet_id, date_admitted, checked_in) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE animals SET (name, dob, species, breed, owner_id, vet_id, date_admitted, checked_in) = (%s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [
         animal.name,
         animal.dob,
         animal.species,
+        animal.breed,
         animal.owner.id,
         animal.vet.id,
         animal.date_admitted,

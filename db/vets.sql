@@ -32,6 +32,7 @@ CREATE TABLE animals (
     name VARCHAR(255),
     dob VARCHAR(255),
     species VARCHAR(255),
+    breed VARCHAR(255),
     owner_id INT REFERENCES owners(id),
     vet_id INT REFERENCES vets(id),
     date_admitted VARCHAR(255),
@@ -59,10 +60,10 @@ INSERT INTO vets (first_name, last_name) VALUES ('Sarah', 'Jackson');
 INSERT INTO vets (first_name, last_name) VALUES ('Hugh', 'Polson');
 INSERT INTO vets (first_name, last_name) VALUES ('James', 'Anderson');
 
-INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Fluff', '14-04-2018', 'Cat', 1, 1, '06-08-2020', true);
-INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Floof', '23-07-2017', 'Dog', 2, 2, '06-08-2020', true);
-INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Adrian', '01-06-2010', 'Chameleon', 1, 2, '05-08-2020', true);
-INSERT INTO animals (name, dob, species, owner_id, vet_id, date_admitted, checked_in) VALUES ('Sticky', '19-08-2016', 'Stick Insect', 3, 4, '05-08-2020', true);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_admitted, checked_in) VALUES ('Fluff', '14-04-2018', 'Cat', 'Maine Coon', 1, 1, '06-08-2020', true);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_admitted, checked_in) VALUES ('Floof', '23-07-2017', 'Dog', 'Spaniel', 2, 2, '06-08-2020', true);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_admitted, checked_in) VALUES ('Adrian', '01-06-2010', 'Chameleon', 'Veiled Chameleon', 1, 2, '05-08-2020', true);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_admitted, checked_in) VALUES ('Sticky', '19-08-2016', 'Stick Insect', 'Common', 3, 4, '05-08-2020', true);
 
 INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Cat is sick', 1);
 INSERT INTO records (date, entry, animal_id) VALUES ('08-08-2020', 'Cat is still sick', 1);
