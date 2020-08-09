@@ -1,3 +1,14 @@
+:root {
+    --blue-sapphire: hsla(196, 67%, 33%, 1);
+    --raisin-black: hsla(240, 9%, 13%, 1);
+    --snow: hsla(340, 100%, 99%, 1);
+    --seashell: hsla(32, 62%, 96%, 1);
+    --liver-chestnut: hsla(27, 31%, 45%, 1);
+    --terra-cotta: hsla(13, 60%, 61%, 1);
+    --cg-red: hsla(2, 70%, 53%, 1);
+    --orange-peel: hsla(35, 100%, 55%, 1);
+}
+
 html {
     height: 100%;
 }
@@ -7,19 +18,76 @@ body {
     margin: 0px;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    font-family: phoreuscherokee, serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--raisin-black)
 }
 
 body>header {
-    background-color: antiquewhite;
+    background-color: var(--blue-sapphire);
     display: grid;
-    grid-template-columns: auto 3fr 5fr;
-    column-gap: 20px;
+    grid-template-columns: auto 2fr 5fr;
+    gap: 0px 20px;
     align-items: center;
+    text-align: center;
+}
+
+body>header>h1 {
+    text-align: left;
+    color: var(--seashell)
+}
+
+.navigation>ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0px 10px;
+    margin: 20px;
+    /* width: 100%; */
+}
+
+.navigation>ul>li {
+    padding: 0px;
+    margin: 0px;
+    width: 20%;
+    text-align: center;
+}
+
+.navigation>ul>li:first-child>a {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.navigation>ul>li:last-child>a {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.navigation>ul>li>a {
+    text-align: center;
+    padding: 20px 0px;
+    width: 100%;
+    display: block;
+    background-color: var(--seashell);
+    margin: 0px;
+    border: none;
+    color: var(--raisin-black);
+    text-decoration: none;
+}
+
+.navigation>ul>li>a:hover {
+    background-color: var(--raisin-black);
+    color: var(--snow);
+}
+
+.active {
+    text-decoration: underline;
+    font-weight: 900;
 }
 
 #logo {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     padding: 10px;
 }
 
@@ -30,5 +98,5 @@ body>main {
 }
 
 body>footer {
-    background-color: blueviolet;
+    background-color: var(--blue-sapphire);
 }

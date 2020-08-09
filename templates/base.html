@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/pzd3rpd.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   {% block css %}
 
@@ -13,15 +14,15 @@
 
 <body>
   <header>
-    <img id="logo" src="{{ url_for('static', filename='img/vet_dog_logo.png') }}" alt="Vet Surgery Logo">
-    <h1>Logo</h1>
+    <img id="logo" src="{{ url_for('static', filename='img/vet_dog_logo_light.png') }}" alt="Vet Surgery Logo">
+    <h1>Animanagement</h1>
     <nav class="navigation">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/vets">Vets</a></li>
-        <li><a href="/animals">Animals</a></li>
-        <li><a href="/owners">Owners</a></li>
-        <li><a href="/records">Records</a></li>
+        <li {% if nav_num == 0 %}class="active" {% endif %}><a href="/">Home</a></li>
+        <li {% if nav_num == 1 %}class="active" {% endif %}><a href="/vets">Vets</a></li>
+        <li {% if nav_num == 2 %}class="active" {% endif %}><a href="/animals">Animals</a></li>
+        <li {% if nav_num == 3 %}class="active" {% endif %}><a href="/owners">Owners</a></li>
+        <li {% if nav_num == 4 %}class="active" {% endif %}><a href="/records">Records</a></li>
       </ul>
     </nav>
   </header>

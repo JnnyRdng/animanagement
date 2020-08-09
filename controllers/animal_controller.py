@@ -7,14 +7,16 @@ import repositories.vet_repository as vet_repository
 import repositories.record_repository as record_repository
 
 animal_blueprint = Blueprint("animals", __name__)
-
+nav_num = 2
 
 # index
 # /animals GET
 @animal_blueprint.route("/animals")
 def index():
     animals = animal_repository.select_all()
-    return render_template("animals/index.html", title="Animals", animals=animals)
+    return render_template(
+        "animals/index.html", nav_num=nav_num, title="Animals", animals=animals
+    )
 
 
 # show
@@ -24,7 +26,11 @@ def show(id):
     animal = animal_repository.select(id)
     records = record_repository.records_by_animal(animal)
     return render_template(
-        "animals/show.html", title="Animal", animal=animal, records=records
+        "animals/show.html",
+        nav_num=nav_num,
+        title="Animal",
+        animal=animal,
+        records=records,
     )
 
 
@@ -35,7 +41,11 @@ def new():
     owners = owner_repository.select_all()
     vets = vet_repository.select_all()
     return render_template(
-        "/animals/new.html", title="Register Animal", owners=owners, vets=vets
+        "/animals/new.html",
+        nav_num=nav_num,
+        title="Register Animal",
+        owners=owners,
+        vets=vets,
     )
 
 
@@ -64,6 +74,7 @@ def edit(id):
     vets = vet_repository.select_all()
     return render_template(
         "animals/edit.html",
+        nav_num=nav_num,
         title="Edit Animal",
         animal=animal,
         owners=owners,
@@ -81,8 +92,8 @@ def update(id):
     owner = owner_repository.select(request.form["owner_id"])
     vet = vet_repository.select(request.form["vet_id"])
     date_admitted = request.form["date_admitted"]
-    checked_in = request.form["checked_in"]
-    animal = Animal(name, dob, species, owner, vet, date_admitted, checked_in)
+    checked_in = "checked_in" in request.form
+    animal = Animal(name, dob, species, owner, vet, date_admitted, checked_in, id)
     animal_repository.update(animal)
     return redirect(f"/animals/{id}")
 
@@ -93,4 +104,14 @@ def update(id):
 def delete(id):
     animal_repository.delete(id)
     return redirect("/animals")
+
+
+# check_out
+# /animals/<id>/checkout POST
+@animal_blueprint.route("/animals/<id>/checkout")
+def checkout(id):
+    animal = animal_repository.select(id)
+    animal.check_out()
+    animal_repository.update(animal)
+    return redirect(f"/animals/{id}")
 
