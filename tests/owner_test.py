@@ -36,3 +36,20 @@ class TestOwner(unittest.TestCase):
         expected = 90
         actual = self.owner.id
         self.assertEqual(expected, actual)
+
+    def test_owner_has_num_animals(self):
+        expected = 0
+        actual = self.owner.animals
+        self.assertEqual(expected, actual)
+
+    def test_set_num_animals(self):
+        self.owner.set_animals(4)
+        expected = 4
+        actual = self.owner.animals
+        self.assertEqual(expected, actual)
+
+    def test_set_num_animals_different_number(self):
+        self.owner.set_animals(8)
+        expected = 8
+        actual = self.owner.animals
+        self.assertEqual(expected, actual)

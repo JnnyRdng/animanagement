@@ -5,3 +5,7 @@ class Owner:
         self.tel = tel
         self.email = email
         self.id = id
+        self.animals = 0
+
+    def set_animals(self, num):
+        self.animals = num
