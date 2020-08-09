@@ -31,7 +31,7 @@ def select_all():
 
 
 def update(address):
-    sql = "UPDATE addresses (num, street, city, postcode) = (%s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE addresses SET (num, street, city, postcode) = (%s, %s, %s, %s) WHERE id = %s"
     values = [
         address.num,
         address.street,

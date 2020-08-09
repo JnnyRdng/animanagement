@@ -5,6 +5,9 @@
 <article class="show-single">
   <section>
     <h2>{{ owner.first_name }} {{ owner.last_name }}</h2>
+    {% for line in address %}
+    <p>{{ line }}</p>
+    {% endfor %}
     <p>Telephone: {{ owner.tel }}</p>
     <p>email: {{ owner.email }}</p>
     <a href="/owners/{{owner.id}}/edit">Edit details</a>

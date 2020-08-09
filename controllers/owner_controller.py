@@ -1,7 +1,9 @@
 from flask import Flask, Blueprint, render_template, request, redirect
 
 from models.owner import Owner
+from models.address import Address
 import repositories.owner_repository as owner_repository
+import repositories.address_repository as address_repository
 import repositories.animal_repository as animal_repository
 
 owner_blueprint = Blueprint("owners", __name__)
@@ -20,8 +22,9 @@ def index():
 def show(id):
     owner = owner_repository.select(id)
     animals = animal_repository.animals_by_owner(owner)
+    address = owner.address.printable()
     return render_template(
-        "owners/show.html", title="Owner", owner=owner, animals=animals
+        "owners/show.html", title="Owner", owner=owner, animals=animals, address=address
     )
 
 
@@ -38,9 +41,15 @@ def new():
 def create():
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
+    num = request.form["num"]
+    street = request.form["street"]
+    city = request.form["city"]
+    postcode = request.form["postcode"]
+    address = Address(num, street, city, postcode)
+    address_repository.save(address)
     tel = request.form["tel"]
     email = request.form["email"]
-    owner = Owner(first_name, last_name, tel, email)
+    owner = Owner(first_name, last_name, address, tel, email)
     owner_repository.save(owner)
     return redirect("/owners")
 
@@ -59,9 +68,16 @@ def edit(id):
 def update(id):
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
+    num = request.form["num"]
+    street = request.form["street"]
+    city = request.form["city"]
+    postcode = request.form["postcode"]
+    address_id = request.form["address_id"]
+    address = Address(num, street, city, postcode, address_id)
+    address_repository.update(address)
     tel = request.form["tel"]
     email = request.form["email"]
-    owner = Owner(first_name, last_name, tel, email, id)
+    owner = Owner(first_name, last_name, address, tel, email, id)
     owner_repository.update(owner)
     return redirect(f"/owners/{id}")
 
