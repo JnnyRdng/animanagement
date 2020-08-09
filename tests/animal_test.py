@@ -54,11 +54,30 @@ class TestAnimal(unittest.TestCase):
         actual = self.animal.checked_in
         self.assertEqual(expected, actual)
 
-    def test_animal_already_checked_out_returns_False(self):
-        self.animal.check_out()
-        expected = False
+    def test_checked_out_returns_True(self):
+        expected = True
         actual = self.animal.check_out()
         self.assertEqual(expected, actual)
+
+    def test_animal_already_checked_out_returns_None(self):
+        self.animal.check_out()
+        actual = self.animal.check_out()
+        self.assertIsNone(actual)
+
+    def test_checked_in(self):
+        self.animal.check_in()
+        expected = True
+        actual = self.animal.checked_in
+        self.assertEqual(expected, actual)
+
+    def test_checked_in_returns_True(self):
+        actual = self.animal.check_in()
+        self.assertIsNone(actual)
+
+    def test_animal_already_checked_in_returns_None(self):
+        self.animal.check_in()
+        actual = self.animal.check_in()
+        self.assertIsNone(actual)
 
     def test_animal_has_None_id(self):
         actual = self.animal.id
@@ -68,4 +87,21 @@ class TestAnimal(unittest.TestCase):
         self.animal.id = 7816
         expected = 7816
         actual = self.animal.id
+        self.assertEqual(expected, actual)
+
+    def test_animal_has_num_records(self):
+        expected = 0
+        actual = self.animal.records
+        self.assertEqual(expected, actual)
+
+    def test_set_num_records(self):
+        self.animal.set_records(5)
+        expected = 5
+        actual = self.animal.records
+        self.assertEqual(expected, actual)
+
+    def test_set_num_records_different_number(self):
+        self.animal.set_records(10)
+        expected = 10
+        actual = self.animal.records
         self.assertEqual(expected, actual)

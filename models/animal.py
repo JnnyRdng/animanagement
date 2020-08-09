@@ -10,12 +10,21 @@ class Animal:
         self.date_admitted = date_admitted
         self.checked_in = checked_in
         self.id = id
+        self.records = 0
 
     def check_out(self):
-        # if already checked out, return false
-        # else check out and return true
+        # if already checked out, return None
+        # else check out and return True
         if self.checked_in:
             self.checked_in = False
             return True
-        else:
-            return False
+
+    def check_in(self):
+        # if already checked in, return None
+        #  else check in and return True
+        if not self.checked_in:
+            self.checked_in = True
+            return True
+
+    def set_records(self, num):
+        self.records = num
