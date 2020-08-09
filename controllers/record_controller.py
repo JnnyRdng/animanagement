@@ -52,10 +52,11 @@ def create():
 
 # edit
 # /records/<id>/edit
+@record_blueprint.route("/records/<id>/edit")
 def edit(id):
     record = record_repository.select(id)
     return render_template(
-        "/records/edit/html", nav_num=nav_num, title="Edit Record", record=record
+        "/records/edit.html", nav_num=nav_num, title="Edit Record", record=record
     )
 
 

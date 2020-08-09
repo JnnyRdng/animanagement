@@ -1,0 +1,15 @@
+{% extends 'records/base.html' %}
+
+
+{% block content %}
+<article class="show-all">
+  {% for record in records %}
+  <section class="record-card">
+    <h3>{{ record.date }}</h3>
+    <h3>{{ record.animal.name }}</h3>
+    <p>{{ record.entry|truncate(40, True, '...', 0) }}</p>
+    <a href="/records/{{ record.id }}">Show record</a>
+  </section>
+  {% endfor %}
+</article>
+{% endblock content %}

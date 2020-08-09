@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<article class="new">
+  <h2>Add to medical records</h2>
+  <form action="/records" method="post">
+    <label for="date">Date:</label>
+    <input type="text" name="date" required autofocus>
+    <label for="entry">Entry:</label>
+    <textarea name="entry" required></textarea>
+    <label for="animal_id">Animal:</label>
+    <select name="animal_id" required>
+      <option value="" selected disabled>Choose animal</option>
+      {% for animal in animals %}
+      <option value="{{ animal.id }}">{{ animal.name }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit">
+  </form>
+</article>
+{% endblock content %}

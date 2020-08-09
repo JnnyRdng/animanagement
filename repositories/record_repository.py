@@ -32,7 +32,7 @@ def select_all():
     sql = "SELECT * FROM records"
     results = run_sql(sql)
     for row in results:
-        animal = animal_repository.select(row["id"])
+        animal = animal_repository.select(row["animal_id"])
         record = Record(row["date"], row["entry"], animal, row["id"])
         records.append(record)
     return records
