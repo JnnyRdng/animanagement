@@ -1,11 +1,15 @@
 import unittest
 
+from models.address import Address
 from models.owner import Owner
 
 
 class TestOwner(unittest.TestCase):
     def setUp(self):
-        self.owner = Owner("John", "Smith", "07752231146", "john.smith@mail.com")
+        self.address = Address("14", "Main Street", "Liverpool", "LI7 3RP")
+        self.owner = Owner(
+            "John", "Smith", self.address, "07752231146", "john.smith@mail.com"
+        )
 
     def test_owner_has_first_name(self):
         expected = "John"
@@ -52,4 +56,9 @@ class TestOwner(unittest.TestCase):
         self.owner.set_animals(8)
         expected = 8
         actual = self.owner.animals
+        self.assertEqual(expected, actual)
+
+    def test_owner_address(self):
+        expected = "Liverpool"
+        actual = self.owner.address.city
         self.assertEqual(expected, actual)

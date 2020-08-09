@@ -1,6 +1,7 @@
 import unittest
 
 from models.vet import Vet
+from models.address import Address
 from models.owner import Owner
 from models.animal import Animal
 
@@ -8,7 +9,10 @@ from models.animal import Animal
 class TestAnimal(unittest.TestCase):
     def setUp(self):
         self.vet = Vet("Mark", "Bridges")
-        self.owner = Owner("Kevin", "Stevens", "015825536874", "kevin@mail.com")
+        self.address = Address("9", "Big Road", "Vatican City", "PO1 1PE")
+        self.owner = Owner(
+            "Kevin", "Stevens", self.address, "015825536874", "kevin@mail.com"
+        )
         self.animal = Animal(
             "Fluff", "04-01-2018", "Dog", self.owner, self.vet, "06-08-2020"
         )
