@@ -68,5 +68,5 @@ INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Cat is sick'
 INSERT INTO records (date, entry, animal_id) VALUES ('08-08-2020', 'Cat is still sick', 1);
 INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Dog is ill', 2);
 INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Chameleon can''t change colour', 3);
-INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'He''s just not very good at being a stick insect unfortunately', 4);
+INSERT INTO records (date, entry, animal_id) VALUES ('03-08-2020', 'Something is wrong with Sticky, he''s been right off his food and he''s hardly moving at all', 4);
 INSERT INTO records (date, entry, animal_id) VALUES ('07-08-2020', 'Further tests show that Sticky is in fact a stick and we''ve all made a terrible mistake', 4);
