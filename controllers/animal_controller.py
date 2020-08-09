@@ -45,11 +45,12 @@ def create():
     name = request.form["name"]
     dob = request.form["dob"]
     species = request.form["species"]
+    breed = request.form["breed"]
     owner = owner_repository.select(request.form["owner_id"])
     vet = vet_repository.select(request.form["vet_id"])
     date_admitted = request.form["date_admitted"]
     checked_in = request.form["checked_in"]
-    animal = Animal(name, dob, species, owner, vet, date_admitted, checked_in)
+    animal = Animal(name, dob, species, breed, owner, vet, date_admitted, checked_in)
     animal_repository.save(animal)
     return redirect("/animals")
 
@@ -59,13 +60,13 @@ def create():
 @animal_blueprint.route("/animals/<id>/edit")
 def edit(id):
     animal = animal_repository.select(id)
-    owners = owner_repository.select_all()
+    # owners = owner_repository.select_all()
     vets = vet_repository.select_all()
     return render_template(
         "animals/edit.html",
         title="Edit Animal",
         animal=animal,
-        owners=owners,
+        # owners=owners,
         vets=vets,
     )
 
@@ -77,11 +78,14 @@ def update(id):
     name = request.form["name"]
     dob = request.form["dob"]
     species = request.form["species"]
+    breed = request.form["breed"]
     owner = owner_repository.select(request.form["owner_id"])
     vet = vet_repository.select(request.form["vet_id"])
     date_admitted = request.form["date_admitted"]
     checked_in = "checked_in" in request.form
-    animal = Animal(name, dob, species, owner, vet, date_admitted, checked_in, id)
+    animal = Animal(
+        name, dob, species, breed, owner, vet, date_admitted, checked_in, id
+    )
     animal_repository.update(animal)
     return redirect(f"/animals/{id}")
 
