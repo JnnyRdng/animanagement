@@ -15,7 +15,13 @@ class TestRecord(unittest.TestCase):
             "Kevin", "Stevens", self.address, "015825536874", "kevin@mail.com"
         )
         self.animal = Animal(
-            "Fluff", "04-01-2018", "Dog", self.owner, self.vet, "06-08-2020"
+            "Fluff",
+            "04-01-2018",
+            "Dog",
+            "Greyhound",
+            self.owner,
+            self.vet,
+            "06-08-2020",
         )
         self.animal.id = 763
         self.record = Record("13-04-2020", "Cat is sick.", self.animal)

@@ -14,7 +14,13 @@ class TestAnimal(unittest.TestCase):
             "Kevin", "Stevens", self.address, "015825536874", "kevin@mail.com"
         )
         self.animal = Animal(
-            "Fluff", "04-01-2018", "Dog", self.owner, self.vet, "06-08-2020"
+            "Fluff",
+            "04-01-2018",
+            "Dog",
+            "Greyhound",
+            self.owner,
+            self.vet,
+            "06-08-2020",
         )
 
     def test_animal_has_name(self):
@@ -30,6 +36,11 @@ class TestAnimal(unittest.TestCase):
     def test_animal_species(self):
         expected = "Dog"
         actual = self.animal.species
+        self.assertEqual(expected, actual)
+
+    def test_animal_breed(self):
+        expected = "Greyhound"
+        actual = self.animal.breed
         self.assertEqual(expected, actual)
 
     def test_animal_has_owner(self):

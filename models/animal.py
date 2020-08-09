@@ -1,10 +1,20 @@
 class Animal:
     def __init__(
-        self, name, dob, species, owner, vet, date_admitted, checked_in=True, id=None
+        self,
+        name,
+        dob,
+        species,
+        breed,
+        owner,
+        vet,
+        date_admitted,
+        checked_in=True,
+        id=None,
     ):
         self.name = name
         self.dob = dob
         self.species = species
+        self.breed = breed
         self.owner = owner
         self.vet = vet
         self.date_admitted = date_admitted
