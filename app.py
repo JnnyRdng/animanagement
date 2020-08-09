@@ -15,7 +15,7 @@ app.register_blueprint(record_blueprint)
 
 @app.route("/")
 def homepage():
-    return render_template("index.html", title="Home", nav_num=0)
+    return render_template("index.html", title="Home")
 
 
 if __name__ == "__main__":

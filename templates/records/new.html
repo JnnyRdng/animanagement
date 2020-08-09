@@ -11,10 +11,14 @@
     <textarea name="entry" required></textarea>
     <label for="animal_id">Animal:</label>
     <select name="animal_id" required>
+      {% if animal != None %}
+      <option value="{{ animal.id }}" selected disabled>{{ animal.name }}</option>
+      {% else %}
       <option value="" selected disabled>Choose animal</option>
       {% for animal in animals %}
       <option value="{{ animal.id }}">{{ animal.name }}</option>
       {% endfor %}
+      {% endif %}
     </select>
     <input type="submit">
   </form>

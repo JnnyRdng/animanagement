@@ -18,11 +18,11 @@
     <h1>Animanagement</h1>
     <nav class="navigation">
       <ul>
-        <li {% if nav_num == 0 %}class="active" {% endif %}><a href="/">Home</a></li>
-        <li {% if nav_num == 1 %}class="active" {% endif %}><a href="/vets">Vets</a></li>
-        <li {% if nav_num == 2 %}class="active" {% endif %}><a href="/animals">Animals</a></li>
-        <li {% if nav_num == 3 %}class="active" {% endif %}><a href="/owners">Owners</a></li>
-        <li {% if nav_num == 4 %}class="active" {% endif %}><a href="/records">Records</a></li>
+        <li {% if active_page == "home" %}class="active" {% endif %}><a href="/">Home</a></li>
+        <li {% if active_page == "vets" %}class="active" {% endif %}><a href="/vets">Vets</a></li>
+        <li {% if active_page == "animals" %}class="active" {% endif %}><a href="/animals">Animals</a></li>
+        <li {% if active_page == "owners" %}class="active" {% endif %}><a href="/owners">Owners</a></li>
+        <li {% if active_page == "records" %}class="active" {% endif %}><a href="/records">Records</a></li>
       </ul>
     </nav>
   </header>

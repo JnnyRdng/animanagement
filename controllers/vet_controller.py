@@ -5,14 +5,13 @@ import repositories.vet_repository as vet_repository
 import repositories.animal_repository as animal_repository
 
 vet_blueprint = Blueprint("vets", __name__)
-nav_num = 1
 
 # index
 # /vets GET
 @vet_blueprint.route("/vets")
 def index():
     vets = vet_repository.select_all()
-    return render_template("/vets/index.html", nav_num=nav_num, title="Vets", vets=vets)
+    return render_template("/vets/index.html", title="Vets", vets=vets)
 
 
 # show
@@ -21,16 +20,14 @@ def index():
 def show(id):
     vet = vet_repository.select(id)
     animals = animal_repository.animals_by_vet(vet)
-    return render_template(
-        "/vets/show.html", nav_num=nav_num, title="Vet", vet=vet, animals=animals
-    )
+    return render_template("/vets/show.html", title="Vet", vet=vet, animals=animals)
 
 
 # new
 # /vets/new GET
 @vet_blueprint.route("/vets/new")
 def new():
-    return render_template("/vets/new.html", nav_num=nav_num, title="Hire Vet")
+    return render_template("/vets/new.html", title="Hire Vet")
 
 
 # create
@@ -49,7 +46,7 @@ def create():
 @vet_blueprint.route("/vets/<id>/edit")
 def edit(id):
     vet = vet_repository.select(id)
-    return render_template("vets/edit.html", nav_num=nav_num, title="Edit Vet", vet=vet)
+    return render_template("vets/edit.html", title="Edit Vet", vet=vet)
 
 
 # update

@@ -5,7 +5,6 @@ import repositories.record_repository as record_repository
 import repositories.animal_repository as animal_repository
 
 record_blueprint = Blueprint("records", __name__)
-nav_num = 4
 
 
 # index
@@ -13,9 +12,7 @@ nav_num = 4
 @record_blueprint.route("/records")
 def index():
     records = record_repository.select_all()
-    return render_template(
-        "/records/index.html", nav_num=nav_num, title="Records", records=records
-    )
+    return render_template("/records/index.html", title="Records", records=records)
 
 
 # show
@@ -23,18 +20,23 @@ def index():
 @record_blueprint.route("/records/<id>")
 def show(id):
     record = record_repository.select(id)
-    return render_template(
-        "records/show.html", nav_num=nav_num, title="Record", record=record
-    )
+    return render_template("records/show.html", title="Record", record=record)
 
 
 # new
 # /records/new/ GET
 @record_blueprint.route("/records/new")
-def new():
-    animals = animal_repository.select_all()
+@record_blueprint.route("/records/new/<animal_id>")
+def new(animal_id=None):
+    animal = None
+    animals = []
+    if animal_id is not None:
+        animal = animal_repository.select(animal_id)
+    else:
+        animals = animal_repository.select_all()
+    print(animal)
     return render_template(
-        "records/new.html", nav_num=nav_num, title="New Record", animals=animals
+        "records/new.html", title="New Record", animals=animals, animal=animal,
     )
 
 
@@ -55,9 +57,7 @@ def create():
 @record_blueprint.route("/records/<id>/edit")
 def edit(id):
     record = record_repository.select(id)
-    return render_template(
-        "/records/edit.html", nav_num=nav_num, title="Edit Record", record=record
-    )
+    return render_template("/records/edit.html", title="Edit Record", record=record)
 
 
 # update

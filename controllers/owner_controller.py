@@ -5,16 +5,13 @@ import repositories.owner_repository as owner_repository
 import repositories.animal_repository as animal_repository
 
 owner_blueprint = Blueprint("owners", __name__)
-nav_num = 3
 
 # index
 # /owners GET
 @owner_blueprint.route("/owners")
 def index():
     owners = owner_repository.select_all()
-    return render_template(
-        "owners/index.html", nav_num=nav_num, title="Owners", owners=owners
-    )
+    return render_template("owners/index.html", title="Owners", owners=owners)
 
 
 # show
@@ -24,7 +21,7 @@ def show(id):
     owner = owner_repository.select(id)
     animals = animal_repository.animals_by_owner(owner)
     return render_template(
-        "owners/show.html", nav_num=nav_num, title="Owner", owner=owner, animals=animals
+        "owners/show.html", title="Owner", owner=owner, animals=animals
     )
 
 
@@ -32,7 +29,7 @@ def show(id):
 # /owners/new GET
 @owner_blueprint.route("/owners/new")
 def new():
-    return render_template("/owners/new.html", nav_num=nav_num, title="Register Owner")
+    return render_template("/owners/new.html", title="Register Owner")
 
 
 # create
@@ -53,9 +50,7 @@ def create():
 @owner_blueprint.route("/owners/<id>/edit")
 def edit(id):
     owner = owner_repository.select(id)
-    return render_template(
-        "owners/edit.html", nav_num=nav_num, title="Edit Owner", owner=owner
-    )
+    return render_template("owners/edit.html", title="Edit Owner", owner=owner)
 
 
 # update
