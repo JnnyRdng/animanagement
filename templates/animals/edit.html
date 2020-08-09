@@ -6,6 +6,7 @@
   <form action="/animals/{{ animal.id }}" method="post">
     <label for="name">Name:</label>
     <input type="text" name="name" placeholder="Name" required autofocus value="{{ animal.name }}">
+
     <label for="owner_id">Owner:</label>
     <select name="owner_id" required>
       {% for owner in owners %}
@@ -13,10 +14,16 @@
         {{ owner.last_name }}</option>
       {% endfor %}
     </select>
+
     <label for="dob">DOB:</label>
     <input type="text" name="dob" placeholder="dd-mm-yyyy" required value="{{ animal.dob }}">
+
     <label for="species">Species:</label>
     <input type="text" name="species" placeholder="Species" required value="{{ animal.species }}">
+
+    <label for="breed">Breed:</label>
+    <input type="text" name="breed" placeholder="Breed" required value="{{ animal.breed }}">
+
     <label for="vet_id">Assign vet:</label>
     <select name="vet_id" required>
       {% for vet in vets %}
@@ -24,10 +31,13 @@
         {{ vet.last_name }}</option>
       {% endfor %}
     </select>
+
     <label for="date_admitted">Date admitted:</label>
     <input type="text" name="date_admitted" placeholder="dd-mm-yyyy" required value="{{ animal.date_admitted }}">
+
     <label for="checked_in">Checked in?</label>
     <input type="checkbox" name="checked_in" {% if animal.checked_in %} checked {% endif %}>
+
     <input type="submit">
   </form>
 </article>

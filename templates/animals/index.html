@@ -8,7 +8,8 @@
     <div>
       <img src="{{ url_for('static', filename='img/placeholder.png') }}">
       <span>{{ animal.name }}</span>
-      <span>{{ animal.species.capitalize() }}</span>
+      <span>{{ animal.species }}</span>
+      <span>{{ animal.breed }}</span>
     </div>
     <div>
       <a href="/animals/{{ animal.id }}">Show details</a>
