@@ -11,7 +11,7 @@
   <main>
     <p>Species: {{ animal.species }}</p>
     <p>Breed: {{ animal.breed }}</p>
-    <p>DOB: {{ animal.dob }}</p>
+    <p>DOB: {{ animal.printable_date(animal.dob) }} ({{ animal.get_age() }})</p>
     <p>{{ animal.date_registered }}</p>
     {% if animal.checked_in %}
     <span class="checked-in">✓</span>
@@ -39,9 +39,9 @@
         <a href="/records/new/{{ animal.id }}">Add new entry</a>
       </header>
       <main>
-        {% for record in records|sort(reverse=false, attribute="date") %}
+        {% for record in records|sort(reverse=true, attribute="date") %}
         <section>
-          <h4>{{ record.date }}</h4>
+          <h4>{{ record.printable_datetime() }}</h4>
           <p>{{ record.entry|truncate(100, True, '...', 0) }}</p>
           <a href="/records/{{record.id}}">View record</a>
         </section>
