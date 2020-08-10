@@ -41,7 +41,7 @@
       <main>
         {% for record in records|sort(reverse=true, attribute="date") %}
         <section>
-          <h4>{{ record.printable_datetime() }}</h4>
+          <h4>{{ record.print_date('print_nice') }}</h4>
           <p>{{ record.entry|truncate(100, True, '...', 0) }}</p>
           <a href="/records/{{record.id}}">View record</a>
         </section>

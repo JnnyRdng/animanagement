@@ -6,14 +6,18 @@
   <h2>Add to medical records</h2>
   <form action="/records" method="post">
     <label for="date">Date:</label>
-    <input type="text" name="date" required autofocus>
+    <input type="datetime-local" name="date" value="{{ current_time }}" required>
+
     <label for="entry">Entry:</label>
     <textarea name="entry" required></textarea>
+
     {% if animal != None %}
     <label for="display_animal">Animal:</label>
     <input type="text" name="display_animal" value="{{ animal.name }}" disabled>
     <input type="hidden" value="{{ animal.id }}" name="animal_id">
+
     {% else %}
+
     <label for="animal_id">Animal:</label>
     <select name="animal_id" required>
       <option value="" selected disabled>Choose animal</option>
@@ -22,6 +26,7 @@
       {% endfor %}
       {% endif %}
     </select>
+
     <input type="submit">
   </form>
 </article>

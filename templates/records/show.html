@@ -3,7 +3,7 @@
 {% block content %}
 <article class="show-single">
   <section>
-    <h3>Date: {{ record.date }}</h3>
+    <h3>Date: {{ record.print_date("print_nice") }}</h3>
     <p>{{ record.entry }}</p>
     <a href="/records/{{ record.id }}/edit">Edit</a>
     <a href="/records/{{ record.id }}/delete">Delete</a>

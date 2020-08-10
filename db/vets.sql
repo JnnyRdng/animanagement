@@ -60,12 +60,12 @@ INSERT INTO vets (first_name, last_name) VALUES ('Sarah', 'Jackson');
 INSERT INTO vets (first_name, last_name) VALUES ('Hugh', 'Polson');
 INSERT INTO vets (first_name, last_name) VALUES ('James', 'Anderson');
 
-INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Fluff', '2018-04-14', 'Cat', 'Maine Coon', 1, 1, '2020-08-06', false);
-INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Floof', '2017-07-23', 'Dog', 'Spaniel', 2, 2, '2020-08-06', true);
-INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Adrian', '1990-10-23', 'Chameleon', 'Veiled Chameleon', 1, 2, '2020-08-05', true);
-INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Sticky', '2019-11-28', 'Stick Insect', 'Common', 3, 4, '2020-08-05', true);
-INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Howard', '1965-01-12', 'Tortoise', 'Galapagos', 3, 3, '07-08-2020', true);
-INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Harambe', '1999-05-27', 'Gorilla', 'Western Lowland', 2, 5, '2016-05-28', false);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Fluff', '2018-04-14', 'Cat', 'Maine Coon', 1, 1, '2020-08-06 11:42', false);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Floof', '2017-07-23', 'Dog', 'Spaniel', 2, 2, '2020-08-06 14:13', true);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Adrian', '1990-10-23', 'Chameleon', 'Veiled Chameleon', 1, 2, '2020-08-05 "12:01', true);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Sticky', '2019-11-28', 'Stick Insect', 'Common', 3, 4, '2020-08-05 16:48', true);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Howard', '1965-01-12', 'Tortoise', 'Galapagos', 3, 3, '07-08-2020 10:14', true);
+INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Harambe', '1999-05-27', 'Gorilla', 'Western Lowland', 2, 5, '2016-05-28 08:58', false);
 
 INSERT INTO records (date, entry, animal_id) VALUES ('2020-08-07 10:29:50', 'Cat is sick', 1);
 INSERT INTO records (date, entry, animal_id) VALUES ('2020-08-08 14:11:01', 'Cat is still sick', 1);

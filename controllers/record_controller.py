@@ -1,6 +1,9 @@
 from flask import Flask, Blueprint, render_template, request, redirect
+import datetime
 
 from models.record import Record
+from models.date_helper import DateHelper
+
 import repositories.record_repository as record_repository
 import repositories.animal_repository as animal_repository
 
@@ -34,9 +37,14 @@ def new(animal_id=None):
         animal = animal_repository.select(animal_id)
     else:
         animals = animal_repository.select_all()
-    print(animal)
+    dh = DateHelper()
+    current_time = dh.print_datetime_local(datetime.datetime.now())
     return render_template(
-        "records/new.html", title="New Record", animals=animals, animal=animal,
+        "records/new.html",
+        title="New Record",
+        animals=animals,
+        animal=animal,
+        current_time=current_time,
     )
 
 
