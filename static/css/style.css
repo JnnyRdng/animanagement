@@ -87,8 +87,12 @@ body>header>h1 {
 }
 
 .active>a {
-    background-color: var(--raisin-black) !important;
+    background-color: var(--black-transp) !important;
     color: var(--seashell) !important;
+}
+
+.active>a:hover {
+    background-color: var(--raisin-black) !important;
 }
 
 #logo {
