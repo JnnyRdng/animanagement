@@ -26,13 +26,13 @@ form>ul>li {
     display: grid;
     grid-template-columns: 3fr 8fr;
     grid-template-areas: "submit submit";
-    gap: 20px;
+    /* gap: 20px; */
     justify-content: space-between;
     align-content: center;
     align-items: start;
 }
 
-input, select, option {
+input, select, option, textarea {
     font-family: inherit;
 }
 
@@ -46,4 +46,23 @@ input[type=submit] {
 
 input:disabled {
     background-color: lightpink;
+}
+
+.full-width {
+    padding-top: 20px;
+    grid-column-start: span 2;
+}
+
+.full-width>div {
+    grid-column-start: span 2;
+    display: flex !important;
+    flex-direction: column;
+    align-content: flex-start;
+    width: 100%;
+}
+
+textarea {
+    height: 180px;
+    width: 100%;
+    font-size: 1rem;
 }
