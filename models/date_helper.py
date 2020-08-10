@@ -13,3 +13,8 @@ class DateHelper:
 
     def print_datetime(self, date):
         return date.strftime("%H:%M:%S %d %b %Y")
+
+    def print_nice(self, date):
+        time = date.strftime("%-I:%M%p").lower()
+        date = date.strftime("%-d %b %Y")
+        return f"{time}, {date}"

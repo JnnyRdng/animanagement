@@ -19,3 +19,8 @@ class TestDateHelper(unittest.TestCase):
         expected = "14:08:00 02 May 1998"
         actual = self.dh.print_datetime(self.datetime_obj)
         self.assertEqual(expected, actual)
+
+    def test_print_nice(self):
+        expected = "2:08pm, 2 May 1998"
+        actual = self.dh.print_nice(self.datetime_obj)
+        self.assertEqual(expected, actual)
