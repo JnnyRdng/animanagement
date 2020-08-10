@@ -64,3 +64,8 @@ class Animal:
             break
         return age_string
 
+    def dob_strptime(self, date):
+        self.dob = datetime.datetime.strptime(date, "%Y-%m-%d")
+
+    def registered_strptime(self, date):
+        self.date_registered = datetime.datetime.strptime(date, "%Y-%m-%d %H:%M:%S")

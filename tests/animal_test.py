@@ -138,3 +138,15 @@ class TestAnimal(unittest.TestCase):
         expected = "2 years old"
         actual = self.animal.get_age(self.now)
         self.assertEqual(expected, actual)
+
+    def test_input_dob_date(self):
+        self.animal.dob_strptime("1999-12-20")
+        expected = "20 Dec 1999"
+        actual = self.animal.dob.strftime("%d %b %Y")
+        self.assertEqual(expected, actual)
+
+    def test_input_registered_date(self):
+        self.animal.registered_strptime("1998-11-01 16:09:52")
+        expected = "01 Nov 1998 16:09:52"
+        actual = self.animal.date_registered.strftime("%d %b %Y %H:%M:%S")
+        self.assertEqual(expected, actual)
