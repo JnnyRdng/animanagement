@@ -1,5 +1,4 @@
 {% extends 'records/base.html' %}
-{% set sidenav = "new" %}
 {% block page_css %}
 <link rel="stylesheet" href=" {{ url_for('static', filename='css/form.css') }} ">
 {% endblock page_css %}
@@ -7,8 +6,8 @@
 {% block content %}
 <article class="form">
   <header>
-    <a href="animals/{{ animal.id }}">&lt; Back</a>
-    <h2>Add to medical records</h2>
+    <a href="/animals/{{ animal.id }}">&lt; Back</a>
+    <h2>New</h2>
   </header>
   <form action="/records" method="post">
     <ul>

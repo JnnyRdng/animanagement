@@ -1,17 +1,32 @@
-{% extends 'base.html' %}
-
+{% extends 'records/base.html' %}
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/form.css') }} ">
+{% endblock page_css %}
 
 {% block content %}
-<article class="new">
-  <h2>Add to medical records</h2>
+<article class="form">
+  <header>
+    <a href="/animals/{{ record.animal.id }}">&lt; Back</a>
+    <h2>Edit</h2>
+  </header>
   <form action="/records/{{ record.id }}" method="post">
-    <label for="date">Date:</label>
-    <input type="text" name="date" required value="{{ record.date }}">
-    <label for="entry">Entry:</label>
-    <textarea name="entry" required>{{ record.entry }}</textarea>
-    <label for="display_animal">Animal:</label>
-    <input type="text" name="display_animal" disabled value="{{ record.animal.name }}">
-    <input type="hidden" name="animal_id" value="{{ record.animal.id }}">
+    <ul>
+      <li>
+        <label for="date">Date:</label>
+        <input type="text" name="date" required value="{{ record.date }}">
+      </li>
+      <li>
+        <label for="display_animal">Animal:</label>
+        <input type="text" name="display_animal" disabled value="{{ record.animal.name }}">
+        <input type="hidden" name="animal_id" value="{{ record.animal.id }}">
+      </li>
+      <li class="full-width">
+        <div>
+          <label for="entry">Entry:</label>
+          <textarea name="entry" required>{{ record.entry }}</textarea>
+        </div>
+      </li>
+    </ul>
     <input type="submit">
   </form>
 </article>
