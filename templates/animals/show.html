@@ -31,23 +31,34 @@
     <a href="/animals/{{animal.id}}/edit">Edit details</a>
     <a href="/animals/{{animal.id}}/delete">Remove from system</a>
   </footer>
-  <section>
+  <section id="records">
     {% if records|length > 0 %}
-    <h3>{{animal.name}}'s medical records</h3>
-    <a href="/records/new/{{ animal.id }}">Add new entry</a>
-    {% for record in records|sort(reverse=true, attribute="date") %}
-    <section>
-      <h4>{{ record.date }}</h4>
-      <p>{{ record.entry }}</p>
-      <a href="/records/{{record.id}}">View record</a>
-    </section>
-    {% endfor %}
+    <article>
+      <header>
+        <h3>{{animal.name}}'s medical records</h3>
+        <a href="/records/new/{{ animal.id }}">Add new entry</a>
+      </header>
+      <main>
+        {% for record in records|sort(reverse=false, attribute="date") %}
+        <section>
+          <h4>{{ record.date }}</h4>
+          <p>{{ record.entry }}</p>
+          <a href="/records/{{record.id}}">View record</a>
+        </section>
+        {% endfor %}
+      </main>
+    </article>
+
     {% else %}
-    <section>
-      <h3>No medical records for {{animal.name}} right now</h3>
-      <a href="/records/new/{{ animal.id }}">Add new entry</a>
-    </section>
+
+    <article>
+      <header>
+        <h3>No medical records for {{animal.name}} right now</h3>
+        <a href="/records/new/{{ animal.id }}">Add new entry</a>
+      </header>
+    </article>
     {% endif %}
+
   </section>
 </article>
 {% endblock content %}

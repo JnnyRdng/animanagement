@@ -3,7 +3,8 @@
     width: 95%;
     display: grid;
     grid-template-areas: "header header" "main aside" "footer footer" "section section";
-    grid-template-columns: 4fr 2fr;
+    grid-template-columns: 5fr 2fr;
+    grid-template-rows: auto 0.5fr auto 1fr;
 }
 
 .show-single>header {
@@ -20,8 +21,30 @@
 
 .show-single>footer {
     grid-area: footer;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
 }
 
-.show-single>section {
+#records {
     grid-area: section;
+    margin-top: 40px;
+}
+
+#records>article {
+    display: flex;
+    flex-flow: column;
+}
+
+#records>article>main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 40px;
+    align-content: start;
+    align-items: start;
+    padding: 10px;
+}
+
+#records>article>main>section {
+    /* width: 40%; */
 }

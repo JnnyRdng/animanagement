@@ -3,7 +3,8 @@
 
 {% block content %}
 <article class="edit">
-  <form action="/animals/{{ animal.id }}" method="post">
+  <a href="/animals/{{ animal.id }}">&lt; Back</a>
+  <form action="/animals/{{ animal.id }}" method="post" name="helloworld">
     <label for="name">Name:</label>
     <input type="text" name="name" placeholder="Name" required autofocus value="{{ animal.name }}">
 
