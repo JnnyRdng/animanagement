@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint, render_template, request, redirect
+import datetime
 
 from models.animal import Animal
 import repositories.animal_repository as animal_repository
@@ -48,11 +49,12 @@ def create():
     breed = request.form["breed"]
     owner = owner_repository.select(request.form["owner_id"])
     vet = vet_repository.select(request.form["vet_id"])
-    date_registered = request.form["date_registered"]
-    checked_in = request.form["checked_in"]
+    date_registered = datetime.datetime.now()
+    # date_registered = request.form["date_registered"]
+    checked_in = "checked_in" in request.form
     animal = Animal(name, dob, species, breed, owner, vet, date_registered, checked_in)
     animal_repository.save(animal)
-    return redirect("/animals")
+    return redirect(f"/animals/{animal.id}")
 
 
 # edit

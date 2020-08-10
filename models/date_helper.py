@@ -18,3 +18,9 @@ class DateHelper:
         time = date.strftime("%-I:%M%p").lower()
         date = date.strftime("%-d %b %Y")
         return f"{time}, {date}"
+
+    def print_format(self, date):
+        return date.strftime("%Y-%m-%d")
+
+    def print_datetime_local(self, date):
+        return date.strftime("%Y-%m-%dT%H:%M")

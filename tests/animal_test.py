@@ -128,3 +128,13 @@ class TestAnimal(unittest.TestCase):
         expected = "2 years old"
         actual = self.animal.get_age(self.now)
         self.assertEqual(expected, actual)
+
+    def test_printed_dob(self):
+        expected = "04 Jan 2018"
+        actual = self.animal.print_dob("print_date")
+        self.assertEqual(expected, actual)
+
+    def test_nice_printed_date_registered(self):
+        expected = "1:52pm, 9 Aug 2020"
+        actual = self.animal.print_registered("print_nice")
+        self.assertEqual(expected, actual)

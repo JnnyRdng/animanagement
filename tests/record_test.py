@@ -59,3 +59,8 @@ class TestRecord(unittest.TestCase):
         expected = 16
         actual = self.record.id
         self.assertEqual(expected, actual)
+
+    def test_printed_date(self):
+        expected = "5:09pm, 3 May 2020"
+        actual = self.record.print_date("print_nice")
+        self.assertEqual(expected, actual)

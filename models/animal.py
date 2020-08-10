@@ -1,6 +1,8 @@
 import datetime
 from dateutil import relativedelta
 
+from models.date_helper import DateHelper
+
 
 class Animal:
     def __init__(
@@ -58,3 +60,10 @@ class Animal:
             break
         return age_string
 
+    def print_dob(self, which):
+        dh = DateHelper()
+        return getattr(dh, which)(self.dob)
+
+    def print_registered(self, which):
+        dh = DateHelper()
+        return getattr(dh, which)(self.date_registered)

@@ -11,8 +11,8 @@
   <main>
     <p>Species: {{ animal.species }}</p>
     <p>Breed: {{ animal.breed }}</p>
-    <p>DOB: {{ animal.printable_date(animal.dob) }} ({{ animal.get_age() }})</p>
-    <p>{{ animal.date_registered }}</p>
+    <p>DOB: {{ animal.print_dob("print_date") }} ({{ animal.get_age() }})</p>
+    <p>Registered: {{ animal.print_registered("print_nice") }}</p>
     {% if animal.checked_in %}
     <span class="checked-in">✓</span>
     {% else %}

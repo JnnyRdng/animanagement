@@ -24,7 +24,7 @@
       </li>
       <li>
         <label for="dob">DOB:</label>
-        <input type="text" name="dob" placeholder="yyyy-mm-dd" required value="{{ animal.dob }}">
+        <input type="date" name="dob" placeholder="yyyy-mm-dd" required value="{{ animal.print_dob('print_format') }}">
       </li>
       <li>
         <label for="species">Species:</label>
@@ -45,8 +45,8 @@
       </li>
       <li>
         <label for="date_registered">Date registered:</label>
-        <input type="text" name="date_registered" placeholder="yyyy-mm-dd" required
-          value="{{ animal.date_registered }}">
+        <input type="datetime-local" name="date_registered" placeholder="yyyy-mm-dd" required
+          value="{{ animal.print_registered('print_datetime_local') }}">
       </li>
       <li>
         <label for="checked_in">Checked in?</label>
