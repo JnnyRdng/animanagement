@@ -24,15 +24,15 @@ Create the postgres database:
 > createdb vet_management
 ```
 
-Create database tables:
+Create and seed database tables:
 ```zsh
 > psql -d vet_management -f /db/vets.sql
 ```
 
-Seed database:
+<!-- Seed database:
 ```zsh
 > python3 console.py
-```
+``` -->
 
 Start server:
 ```zsh
