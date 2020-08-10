@@ -24,9 +24,9 @@ img {
     gap: 20px;
     align-content: start;
     align-items: start;
-    border: 1px solid hsla(240, 9%, 13%, 0.2);
+    border: 1px solid var(--black-transp);
     padding: 10px;
-    box-shadow: 6px 6px 0px hsla(240, 9%, 13%, 0.2);
+    box-shadow: 6px 6px 0px var(--black-transp);
 }
 
 .animal-card>main {

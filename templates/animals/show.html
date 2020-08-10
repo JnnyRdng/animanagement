@@ -1,39 +1,53 @@
 {% extends 'animals/base.html' %}
 
-
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/animals/show.css') }} ">
+{% endblock page_css %}
 {% block content %}
 <article class="show-single">
-  <section>
-    <h2>{{ animal.name }}</h2>
-    <p>Owned by <a href="/owners/{{ animal.owner.id }}">{{ animal.owner.first_name }} {{ animal.owner.last_name }}</a>
-    </p>
-    <p>Assigned to <a href="/vets/{{ animal.vet.id }}">{{ animal.vet.first_name }} {{ animal.vet.last_name }}</a></p>
+  <header>
+    <h2> {{animal.name }}</h2>
+  </header>
+  <main>
+    <p>Species: {{ animal.species }}</p>
+    <p>Breed: {{ animal.breed }}</p>
+    <p>DOB: {{ animal.dob }}</p>
     <p>{{ animal.date_admitted }}</p>
-    <p>{{ animal.checked_in }}</p>
-    <p>{{ animal.species }}</p>
-    <p>{{ animal.breed }}</p>
-    <p>{{ animal.dob }}</p>
+    {% if animal.checked_in %}
+    <span class="checked-in">✓</span>
+    {% else %}
+    <span class="checked-out">✗</span>
+    {% endif %}
 
+  </main>
+  <aside>
+    <p>Owned by <a href="/owners/{{ animal.owner.id }}">{{ animal.owner.first_name }}
+        {{ animal.owner.last_name }}</a>
+    </p>
+    <p>Assigned to <a href="/vets/{{ animal.vet.id }}">{{ animal.vet.first_name }} {{ animal.vet.last_name }}</a>
+    </p>
+  </aside>
+  <footer>
     <a href="/animals/{{animal.id}}/edit">Edit details</a>
     <a href="/animals/{{animal.id}}/delete">Remove from system</a>
-    <aside>
-      {% if records|length > 0 %}
-      <h3>{{animal.name}}'s medical records</h3>
+  </footer>
+  <section>
+    {% if records|length > 0 %}
+    <h3>{{animal.name}}'s medical records</h3>
+    <a href="/records/new/{{ animal.id }}">Add new entry</a>
+    {% for record in records|sort(reverse=true, attribute="date") %}
+    <section>
+      <h4>{{ record.date }}</h4>
+      <p>{{ record.entry }}</p>
+      <a href="/records/{{record.id}}">View record</a>
+    </section>
+    {% endfor %}
+    {% else %}
+    <section>
+      <h3>No medical records for {{animal.name}} right now</h3>
       <a href="/records/new/{{ animal.id }}">Add new entry</a>
-      {% for record in records %}
-      <section>
-        <h4>{{ record.date }}</h4>
-        <p>{{ record.entry }}</p>
-        <a href="/records/{{record.id}}">View record</a>
-      </section>
-      {% endfor %}
-      {% else %}
-      <section>
-        <h3>No medical records for {{animal.name}} right now</h3>
-        <a href="/records/new/{{ animal.id }}">Add new entry</a>
-      </section>
-      {% endif %}
-    </aside>
+    </section>
+    {% endif %}
   </section>
 </article>
 {% endblock content %}

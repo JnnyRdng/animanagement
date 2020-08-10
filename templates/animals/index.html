@@ -3,14 +3,14 @@
 
 {% block content %}
 <article class="show-all">
-  {% for animal in animals %}
+  {% for animal in animals|sort(reverse=true, attribute="date_admitted") %}
   <section class="animal-card">
     <main>
       <img src="{{ url_for('static', filename='img/animal.png') }}">
       <hgroup>
         <h2>{{ animal.name }}</h2>
         <h3>{{ animal.species }}</h3>
-        <h3>{{ animal.breed }}</h3>
+        <h3>Admitted: {{ animal.date_admitted }}</h3>
       </hgroup>
     </main>
     <footer>

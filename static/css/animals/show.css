@@ -1,0 +1,27 @@
+.show-single {
+    margin: 10px auto;
+    width: 95%;
+    display: grid;
+    grid-template-areas: "header header" "main aside" "footer footer" "section section";
+    grid-template-columns: 4fr 2fr;
+}
+
+.show-single>header {
+    grid-area: header;
+}
+
+.show-single>main {
+    grid-area: main;
+}
+
+.show-single>aside {
+    grid-area: aside;
+}
+
+.show-single>footer {
+    grid-area: footer;
+}
+
+.show-single>section {
+    grid-area: section;
+}
