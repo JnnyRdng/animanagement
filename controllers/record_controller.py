@@ -28,21 +28,14 @@ def show(id):
 
 # new
 # /records/new/ GET
-@record_blueprint.route("/records/new")
 @record_blueprint.route("/records/new/<animal_id>")
-def new(animal_id=None):
-    animal = None
-    animals = []
-    if animal_id is not None:
-        animal = animal_repository.select(animal_id)
-    else:
-        animals = animal_repository.select_all()
+def new(animal_id):
+    animal = animal_repository.select(animal_id)
     dh = DateHelper()
     current_time = dh.print_datetime_local(datetime.datetime.now())
     return render_template(
         "records/new.html",
         title="New Record",
-        animals=animals,
         animal=animal,
         current_time=current_time,
     )
@@ -57,7 +50,7 @@ def create():
     animal = animal_repository.select(request.form["animal_id"])
     record = Record(date, entry, animal)
     record_repository.save(record)
-    return redirect("/records")
+    return redirect(f"/animals/{request.form['animal_id']}")
 
 
 # edit
