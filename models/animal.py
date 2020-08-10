@@ -1,3 +1,6 @@
+import datetime
+
+
 class Animal:
     def __init__(
         self,
@@ -7,7 +10,7 @@ class Animal:
         breed,
         owner,
         vet,
-        date_admitted,
+        date_registered,
         checked_in=True,
         id=None,
     ):
@@ -17,7 +20,7 @@ class Animal:
         self.breed = breed
         self.owner = owner
         self.vet = vet
-        self.date_admitted = date_admitted
+        self.date_registered = date_registered
         self.checked_in = checked_in
         self.id = id
         self.records = 0
@@ -38,3 +41,6 @@ class Animal:
 
     def set_records(self, num):
         self.records = num
+
+    def printable_date(self, date):
+        return date.strftime("%H:%M:%S %d %b %Y")

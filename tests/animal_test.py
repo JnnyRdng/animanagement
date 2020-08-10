@@ -1,4 +1,4 @@
-import unittest
+import unittest, datetime
 
 from models.vet import Vet
 from models.address import Address
@@ -53,9 +53,9 @@ class TestAnimal(unittest.TestCase):
         actual = self.animal.vet.first_name
         self.assertEqual(expected, actual)
 
-    def test_admitted_date(self):
+    def test_registered_date(self):
         expected = "06-08-2020"
-        actual = self.animal.date_admitted
+        actual = self.animal.date_registered
         self.assertEqual(expected, actual)
 
     def test_checked_in_default(self):
@@ -120,3 +120,6 @@ class TestAnimal(unittest.TestCase):
         expected = 10
         actual = self.animal.records
         self.assertEqual(expected, actual)
+
+    def test_animal_print_date_string(self):
+        print(self.animal.printable_date(datetime.datetime.now()))

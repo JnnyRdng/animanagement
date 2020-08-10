@@ -48,9 +48,9 @@ def create():
     breed = request.form["breed"]
     owner = owner_repository.select(request.form["owner_id"])
     vet = vet_repository.select(request.form["vet_id"])
-    date_admitted = request.form["date_admitted"]
+    date_registered = request.form["date_registered"]
     checked_in = request.form["checked_in"]
-    animal = Animal(name, dob, species, breed, owner, vet, date_admitted, checked_in)
+    animal = Animal(name, dob, species, breed, owner, vet, date_registered, checked_in)
     animal_repository.save(animal)
     return redirect("/animals")
 
@@ -81,10 +81,10 @@ def update(id):
     breed = request.form["breed"]
     owner = owner_repository.select(request.form["owner_id"])
     vet = vet_repository.select(request.form["vet_id"])
-    date_admitted = request.form["date_admitted"]
+    date_registered = request.form["date_registered"]
     checked_in = "checked_in" in request.form
     animal = Animal(
-        name, dob, species, breed, owner, vet, date_admitted, checked_in, id
+        name, dob, species, breed, owner, vet, date_registered, checked_in, id
     )
     animal_repository.update(animal)
     return redirect(f"/animals/{id}")
