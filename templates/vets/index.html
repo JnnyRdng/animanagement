@@ -3,16 +3,20 @@
 
 {% block content %}
 <article class="show-all">
-  {% for vet in vets %}
+  {% if admitted != undefined %}
+  <h2>Available vets</h2>
+  {% else %}
+  <h2>All vets</h2>
+  {% endif %}
+  {% for vet in vets|sort(attribute="last_name") %}
   <section class="vet-card">
-    <div>
-      <img src="{{ url_for('static', filename='img/placeholder.png') }}">
-      <span>{{ vet.first_name }}</span>
-      <span>{{ vet.last_name }}</span>
-    </div>
-    <div>
+    <main>
+      <img src="{{ url_for('static', filename='img/vet.png') }}">
+      <h3>{{ vet.first_name }} {{ vet.last_name }}</h3>
+    </main>
+    <footer>
       <a href="/vets/{{ vet.id }}">Show details</a>
-    </div>
+    </footer>
 
   </section>
   {% endfor %}

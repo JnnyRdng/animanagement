@@ -1,5 +1,9 @@
 {% extends 'animals/base.html' %}
 
+{% set sidenav = "all" %}
+{% if admitted != undefined %}
+{% set sidenav = "admitted" %}
+{% endif %}
 
 {% block content %}
 <article class="show-all">

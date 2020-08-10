@@ -1,5 +1,5 @@
 {% extends 'animals/base.html' %}
-
+{% set sidenav = "new" %}
 {% block page_css %}
 <link rel="stylesheet" href=" {{ url_for('static', filename='css/animals/form.css') }} ">
 {% endblock page_css %}

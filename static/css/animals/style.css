@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0px;
 }
 
+.show-all>h2 {
+    grid-column-start: span 2;
+}
+
 img {
     height: 80px;
 }
@@ -50,6 +54,7 @@ img {
     border-radius: 10px;
     color: var(--seashell);
     background-color: var(--blue-sapphire);
+    text-decoration: none;
 }
 
 .animal-card>footer>a:hover {

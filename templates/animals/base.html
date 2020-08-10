@@ -13,9 +13,10 @@
 {% block side_nav %}
 <nav class="side-nav">
   <ul>
-    <li><a href="/animals">All Animals</a></li>
-    <li><a href="/animals/admitted">All Checked In Animals</a></li>
-    <li><a href="/animals/new">Register Animal</a></li>
+    <li {% if sidenav == "all" %}class="active" {% endif %}><a href="/animals">All Animals</a></li>
+    <li {% if sidenav == "admitted" %}class="active" {% endif %}><a href="/animals/admitted">All Checked In
+        Animals</a></li>
+    <li {% if sidenav == "new" %}class="active" {% endif %}><a href="/animals/new">Register Animal</a></li>
   </ul>
 </nav>
 {% endblock side_nav %}
