@@ -46,5 +46,13 @@
 }
 
 #records>article>main>section {
-    /* width: 40%; */
+    border: 1px solid var(--black-transp);
+    padding: 10px;
+    box-shadow: 6px 6px 0px var(--black-transp);
+}
+
+#records>article>main>section>p {
+    padding: 10px 14px 30px;
+    background-color: var(--snow);
+    border: 1px solid var(--black-transp);
 }

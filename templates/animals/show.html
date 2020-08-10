@@ -42,7 +42,7 @@
         {% for record in records|sort(reverse=false, attribute="date") %}
         <section>
           <h4>{{ record.date }}</h4>
-          <p>{{ record.entry }}</p>
+          <p>{{ record.entry|truncate(100, True, '...', 0) }}</p>
           <a href="/records/{{record.id}}">View record</a>
         </section>
         {% endfor %}

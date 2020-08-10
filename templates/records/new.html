@@ -9,11 +9,13 @@
     <input type="text" name="date" required autofocus>
     <label for="entry">Entry:</label>
     <textarea name="entry" required></textarea>
+    {% if animal != None %}
+    <label for="display_animal">Animal:</label>
+    <input type="text" name="display_animal" value="{{ animal.name }}" disabled>
+    <input type="hidden" value="{{ animal.id }}" name="animal_id">
+    {% else %}
     <label for="animal_id">Animal:</label>
     <select name="animal_id" required>
-      {% if animal != None %}
-      <option value="{{ animal.id }}" selected disabled>{{ animal.name }}</option>
-      {% else %}
       <option value="" selected disabled>Choose animal</option>
       {% for animal in animals %}
       <option value="{{ animal.id }}">{{ animal.name }}</option>
