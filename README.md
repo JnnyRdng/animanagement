@@ -6,7 +6,11 @@ The brief is to create software to help a vet surgery manage their vets and anim
 
 ### Build notes
 
-#### Dependencies: Flask, psycopg2, postgres
+#### Dependencies: 
+
+> Flask, psycopg2, dateutil
+
+> postgres
 
 In Terminal:
 

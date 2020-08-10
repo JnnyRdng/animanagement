@@ -15,12 +15,15 @@ class TestAnimal(unittest.TestCase):
         )
         self.animal = Animal(
             "Fluff",
-            "04-01-2018",
+            datetime.datetime.strptime("04-01-2018", "%d-%m-%Y"),
             "Dog",
             "Greyhound",
             self.owner,
             self.vet,
             "06-08-2020",
+        )
+        self.now = datetime.datetime.strptime(
+            "10-08-2020 12:20:52", "%d-%m-%Y %H:%M:%S"
         )
 
     def test_animal_has_name(self):
@@ -28,10 +31,10 @@ class TestAnimal(unittest.TestCase):
         actual = self.animal.name
         self.assertEqual(expected, actual)
 
-    def test_animal_has_dob(self):
-        expected = "04-01-2018"
-        actual = self.animal.dob
-        self.assertEqual(expected, actual)
+    # def test_animal_has_dob(self):
+    #     expected = "04-01-2018"
+    #     actual = self.animal.dob
+    #     self.assertEqual(expected, actual)
 
     def test_animal_species(self):
         expected = "Dog"
@@ -121,5 +124,17 @@ class TestAnimal(unittest.TestCase):
         actual = self.animal.records
         self.assertEqual(expected, actual)
 
-    def test_animal_print_date_string(self):
-        print(self.animal.printable_date(datetime.datetime.now()))
+    def test_printable_date(self):
+        expected = "10 Aug 2020"
+        actual = self.animal.printable_date(self.now)
+        self.assertEqual(expected, actual)
+
+    def test_printable_datetime(self):
+        expected = "12:20:52 10 Aug 2020"
+        actual = self.animal.printable_datetime(self.now)
+        self.assertEqual(expected, actual)
+
+    def test_printable_age(self):
+        expected = "2 years old"
+        actual = self.animal.get_age(self.now)
+        self.assertEqual(expected, actual)

@@ -1,4 +1,5 @@
 import datetime
+from dateutil import relativedelta
 
 
 class Animal:
@@ -43,4 +44,23 @@ class Animal:
         self.records = num
 
     def printable_date(self, date):
+        return date.strftime("%d %b %Y")
+
+    def printable_datetime(self, date):
         return date.strftime("%H:%M:%S %d %b %Y")
+
+    def get_age(self, until=datetime.datetime.now()):
+        age = relativedelta.relativedelta(until, self.dob)
+        periods = ["years", "months", "days"]
+        age_string = "0 days old"
+        for period in periods:
+            time = getattr(age, period)
+            if time == 0:
+                continue
+            elif time == 1:
+                age_string = f"{time} {period[:-1]} old"
+            else:
+                age_string = f"{time} {period} old"
+            break
+        return age_string
+
