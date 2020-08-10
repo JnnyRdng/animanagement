@@ -4,10 +4,12 @@ from models.vet import Vet
 from models.address import Address
 from models.owner import Owner
 from models.animal import Animal
+from models.date_helper import DateHelper
 
 
 class TestAnimal(unittest.TestCase):
     def setUp(self):
+        self.dh = DateHelper()
         self.vet = Vet("Mark", "Bridges")
         self.address = Address("9", "Big Road", "Vatican City", "PO1 1PE")
         self.owner = Owner(
@@ -15,26 +17,24 @@ class TestAnimal(unittest.TestCase):
         )
         self.animal = Animal(
             "Fluff",
-            datetime.datetime.strptime("04-01-2018", "%d-%m-%Y"),
+            self.dh.make_date("2018-01-04"),
             "Dog",
             "Greyhound",
             self.owner,
             self.vet,
-            "06-08-2020",
+            self.dh.make_datetime("2020-08-09 13:52:01"),
         )
-        self.now = datetime.datetime.strptime(
-            "10-08-2020 12:20:52", "%d-%m-%Y %H:%M:%S"
-        )
+        self.now = self.dh.make_datetime("2020-08-10 12:20:52")
 
     def test_animal_has_name(self):
         expected = "Fluff"
         actual = self.animal.name
         self.assertEqual(expected, actual)
 
-    # def test_animal_has_dob(self):
-    #     expected = "04-01-2018"
-    #     actual = self.animal.dob
-    #     self.assertEqual(expected, actual)
+    def test_animal_has_dob(self):
+        expected = "04 Jan 2018"
+        actual = self.dh.print_date(self.animal.dob)
+        self.assertEqual(expected, actual)
 
     def test_animal_species(self):
         expected = "Dog"
@@ -57,8 +57,8 @@ class TestAnimal(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_registered_date(self):
-        expected = "06-08-2020"
-        actual = self.animal.date_registered
+        expected = "13:52:01 09 Aug 2020"
+        actual = self.dh.print_datetime(self.animal.date_registered)
         self.assertEqual(expected, actual)
 
     def test_checked_in_default(self):
@@ -124,29 +124,7 @@ class TestAnimal(unittest.TestCase):
         actual = self.animal.records
         self.assertEqual(expected, actual)
 
-    def test_printable_date(self):
-        expected = "10 Aug 2020"
-        actual = self.animal.printable_date(self.now)
-        self.assertEqual(expected, actual)
-
-    def test_printable_datetime(self):
-        expected = "12:20:52 10 Aug 2020"
-        actual = self.animal.printable_datetime(self.now)
-        self.assertEqual(expected, actual)
-
     def test_printable_age(self):
         expected = "2 years old"
         actual = self.animal.get_age(self.now)
-        self.assertEqual(expected, actual)
-
-    def test_input_dob_date(self):
-        self.animal.dob_strptime("1999-12-20")
-        expected = "20 Dec 1999"
-        actual = self.animal.dob.strftime("%d %b %Y")
-        self.assertEqual(expected, actual)
-
-    def test_input_registered_date(self):
-        self.animal.registered_strptime("1998-11-01 16:09:52")
-        expected = "01 Nov 1998 16:09:52"
-        actual = self.animal.date_registered.strftime("%d %b %Y %H:%M:%S")
         self.assertEqual(expected, actual)

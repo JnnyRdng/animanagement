@@ -1,14 +1,16 @@
-import unittest
+import unittest, datetime
 
 from models.vet import Vet
 from models.address import Address
 from models.owner import Owner
 from models.animal import Animal
 from models.record import Record
+from models.date_helper import DateHelper
 
 
 class TestRecord(unittest.TestCase):
     def setUp(self):
+        self.dh = DateHelper()
         self.vet = Vet("Mark", "Bridges")
         self.address = Address("14", "Park Street", "London", "W1A 2SC")
         self.owner = Owner(
@@ -16,19 +18,21 @@ class TestRecord(unittest.TestCase):
         )
         self.animal = Animal(
             "Fluff",
-            "04-01-2018",
+            self.dh.make_date("2018-01-04"),
             "Dog",
             "Greyhound",
             self.owner,
             self.vet,
-            "06-08-2020",
+            self.dh.make_datetime("2020-08-06 13:05:00"),
         )
         self.animal.id = 763
-        self.record = Record("13-04-2020", "Cat is sick.", self.animal)
+        self.record = Record(
+            self.dh.make_datetime("2020-05-03 17:09:03"), "Cat is sick.", self.animal
+        )
 
     def test_record_has_date(self):
-        expected = "13-04-2020"
-        actual = self.record.date
+        expected = "5:09pm, 3 May 2020"
+        actual = self.dh.print_nice(self.record.date)
         self.assertEqual(expected, actual)
 
     def test_record_has_entry(self):
