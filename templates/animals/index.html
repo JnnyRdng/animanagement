@@ -5,15 +5,22 @@
 <article class="show-all">
   {% for animal in animals %}
   <section class="animal-card">
-    <div>
-      <img src="{{ url_for('static', filename='img/placeholder.png') }}">
-      <span>{{ animal.name }}</span>
-      <span>{{ animal.species }}</span>
-      <span>{{ animal.breed }}</span>
-    </div>
-    <div>
+    <main>
+      <img src="{{ url_for('static', filename='img/animal.png') }}">
+      <hgroup>
+        <h2>{{ animal.name }}</h2>
+        <h3>{{ animal.species }}</h3>
+        <h3>{{ animal.breed }}</h3>
+      </hgroup>
+    </main>
+    <footer>
       <a href="/animals/{{ animal.id }}">Show details</a>
-    </div>
+      {% if animal.checked_in %}
+      <span class="checked-in">✓</span>
+      {% else %}
+      <span class="checked-out">✗</span>
+      {% endif %}
+    </footer>
 
   </section>
   {% endfor %}

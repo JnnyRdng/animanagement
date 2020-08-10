@@ -92,9 +92,13 @@ body>header>h1 {
 }
 
 body>main {
-    background-color: aquamarine;
+    background-color: var(--seashell);
     display: grid;
-    grid-template-columns: 2fr 6fr;
+    grid-template-columns: 2fr 7fr;
+}
+
+.sidebar {
+    background-color: #2593BB;
 }
 
 body>footer {
