@@ -1,17 +1,22 @@
 {% extends 'owners/base.html' %}
-
+{% set sidenav = "all" %}
 
 {% block content %}
 <article class="show-all">
-  {% for owner in owners %}
+  {% if admitted != undefined %}
+  <h2>Available owners</h2>
+  {% else %}
+  <h2>All owners</h2>
+  {% endif %}
+  {% for owner in owners|sort(attribute="last_name") %}
   <section class="owner-card">
-    <div>
+    <main>
       <img src="{{ url_for('static', filename='img/owner.png') }}">
-      <span>{{ owner.first_name }}</span>
-      <span>{{ owner.last_name }}</span>
-      <div>
-        <a href="/owners/{{ owner.id }}">Show details</a>
-      </div>
+      <h3>{{ owner.first_name }} {{ owner.last_name }}</h3>
+    </main>
+    <footer>
+      <a href="/owners/{{ owner.id }}">Show details</a>
+    </footer>
 
   </section>
   {% endfor %}
