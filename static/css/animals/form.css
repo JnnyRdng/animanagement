@@ -1,0 +1,49 @@
+.form>header {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 20px 30px 0px;
+    align-items: center;
+}
+
+.form>header>h2 {
+    margin: 0px 40px;
+}
+
+form {
+    padding: 20px;
+}
+
+form>ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 50px;
+    padding: 0px;
+}
+
+form>ul>li {
+    /* width: 90%; */
+    display: grid;
+    grid-template-columns: 3fr 8fr;
+    grid-template-areas: "submit submit";
+    gap: 20px;
+    justify-content: space-between;
+    align-content: center;
+    align-items: start;
+}
+
+input, select, option {
+    font-family: inherit;
+}
+
+input[type=submit] {
+    margin: 20px auto;
+    padding: 10px;
+    grid-area: submit;
+    width: 100%;
+    cursor: pointer;
+}
+
+input:disabled {
+    background-color: lightpink;
+}

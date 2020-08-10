@@ -1,40 +1,56 @@
 {% extends 'animals/base.html' %}
 
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/animals/form.css') }} ">
+{% endblock page_css %}
 
 {% block content %}
-<article class="edit">
-  <a href="/animals/{{ animal.id }}">&lt; Back</a>
+<article class="form">
+  <header>
+    <a href="/animals/{{ animal.id }}">&lt; Back</a>
+    <h2>Edit {{ animal.name }}</h2>
+  </header>
   <form action="/animals/{{ animal.id }}" method="post" name="helloworld">
-    <label for="name">Name:</label>
-    <input type="text" name="name" placeholder="Name" required autofocus value="{{ animal.name }}">
-
-    <label for="display_owner">Owner:</label>
-    <input type="text" name="display_owner" disabled value="{{ animal.owner.first_name }} {{ animal.owner.last_name }}">
-    <input type="hidden" name="owner_id" value="{{ animal.owner.id }}">
-
-    <label for="dob">DOB:</label>
-    <input type="text" name="dob" placeholder="dd-mm-yyyy" required value="{{ animal.dob }}">
-
-    <label for="species">Species:</label>
-    <input type="text" name="species" placeholder="Species" required value="{{ animal.species }}">
-
-    <label for="breed">Breed:</label>
-    <input type="text" name="breed" placeholder="Breed" required value="{{ animal.breed }}">
-
-    <label for="vet_id">Assign vet:</label>
-    <select name="vet_id" required>
-      {% for vet in vets %}
-      <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>{{ vet.first_name }}
-        {{ vet.last_name }}</option>
-      {% endfor %}
-    </select>
-
-    <label for="date_admitted">Date admitted:</label>
-    <input type="text" name="date_admitted" placeholder="dd-mm-yyyy" required value="{{ animal.date_admitted }}">
-
-    <label for="checked_in">Checked in?</label>
-    <input type="checkbox" name="checked_in" {% if animal.checked_in %} checked {% endif %}>
-
+    <ul>
+      <li>
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Name" required autofocus value="{{ animal.name }}">
+      </li>
+      <li>
+        <label for="display_owner">Owner:</label>
+        <input type="text" name="display_owner" disabled
+          value="{{ animal.owner.first_name }} {{ animal.owner.last_name }}">
+        <input type="hidden" name="owner_id" value="{{ animal.owner.id }}">
+      </li>
+      <li>
+        <label for="dob">DOB:</label>
+        <input type="text" name="dob" placeholder="dd-mm-yyyy" required value="{{ animal.dob }}">
+      </li>
+      <li>
+        <label for="species">Species:</label>
+        <input type="text" name="species" placeholder="Species" required value="{{ animal.species }}">
+      </li>
+      <li>
+        <label for="breed">Breed:</label>
+        <input type="text" name="breed" placeholder="Breed" required value="{{ animal.breed }}">
+      </li>
+      <li>
+        <label for="vet_id">Assign vet:</label>
+        <select name="vet_id" required>
+          {% for vet in vets %}
+          <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>{{ vet.first_name }}
+            {{ vet.last_name }}</option>
+          {% endfor %}
+        </select>
+      </li>
+      <li>
+        <label for="date_admitted">Date admitted:</label>
+        <input type="text" name="date_admitted" placeholder="dd-mm-yyyy" required value="{{ animal.date_admitted }}">
+      </li>
+      <li>
+        <label for="checked_in">Checked in?</label>
+        <input type="checkbox" name="checked_in" {% if animal.checked_in %} checked {% endif %}>
+    </ul>
     <input type="submit">
   </form>
 </article>

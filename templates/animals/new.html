@@ -1,44 +1,60 @@
 {% extends 'animals/base.html' %}
 
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/animals/form.css') }} ">
+{% endblock page_css %}
 
 {% block content %}
-<article class="edit">
-  <a href="/animals">&lt; Back</a>
+<article class="form">
+  <header>
+    <a href="/animals">&lt; Back</a>
+    <h2>New</h2>
+  </header>
   <form action="/animals" method="post">
-    <label for="name">Name:</label>
-    <input type="text" name="name" placeholder="Name" required autofocus>
-
-    <label for="owner_id">Owner:</label>
-    <select name="owner_id" required>
-      <option value="" selected disabled>Choose owner</option>
-      {% for owner in owners %}
-      <option value="{{ owner.id }}">{{ owner.first_name }} {{ owner.last_name }}</option>
-      {% endfor %}
-    </select>
-
-    <label for="dob">DOB:</label>
-    <input type="text" name="dob" placeholder="dd-mm-yyyy" required>
-
-    <label for="species">Species:</label>
-    <input type="text" name="species" placeholder="Species" required>
-
-    <label for="breed">Breed:</label>
-    <input type="text" name="breed" placeholder="Breed" required>
-
-    <label for="vet_id">Assign vet:</label>
-    <select name="vet_id" required>
-      <option value="" selected disabled>Choose vet</option>
-      {% for vet in vets %}
-      <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
-      {% endfor %}
-    </select>
-
-    <label for="date_admitted">Date admitted:</label>
-    <input type="text" name="date_admitted" placeholder="dd-mm-yyyy" required>
-
-    <label for="checked_in">Check in?</label>
-    <input type="checkbox" name="checked_in" checked>
-
+    <ul>
+      <li>
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Name" required autofocus>
+      </li>
+      <li>
+        <label for="owner_id">Owner:</label>
+        <select name="owner_id" required>
+          <option value="" selected disabled>Choose owner</option>
+          {% for owner in owners %}
+          <option value="{{ owner.id }}">{{ owner.first_name }} {{ owner.last_name }}</option>
+          {% endfor %}
+        </select>
+      </li>
+      <li>
+        <label for="dob">DOB:</label>
+        <input type="text" name="dob" placeholder="dd-mm-yyyy" required>
+      </li>
+      <li>
+        <label for="species">Species:</label>
+        <input type="text" name="species" placeholder="Species" required>
+      </li>
+      <li>
+        <label for="breed">Breed:</label>
+        <input type="text" name="breed" placeholder="Breed" required>
+      </li>
+      <li>
+        <label for="vet_id">Assign vet:</label>
+        <select name="vet_id" required>
+          <option value="" selected disabled>Choose vet</option>
+          {% for vet in vets %}
+          <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
+          {% endfor %}
+        </select>
+      </li>
+      <li>
+        <label for="date_admitted">Date admitted:</label>
+        <input type="text" name="date_admitted" placeholder="dd-mm-yyyy" required>
+      </li>
+      <li>
+        <label for="checked_in">Check in?</label>
+        <input type="checkbox" name="checked_in" checked>
+      </li>
+    </ul>
     <input type="submit">
   </form>
 </article>
