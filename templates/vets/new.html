@@ -1,14 +1,25 @@
-{% extends 'base.html' %}
-
-
+{% extends 'vets/base.html' %}
+{% set sidenav = "new" %}
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/form.css') }} ">
+{% endblock page_css %}
 {% block content %}
-<article class="new">
-  <h2>Add a new vet</h2>
+<article class="form">
+  <header>
+    <a href="/vets">&lt; Back</a>
+    <h2>New</h2>
+  </header>
   <form action="/vets" method="post">
-    <label for="first_name">First name:</label>
-    <input type="text" name="first_name" required autofocus>
-    <label for="last_name">Last name:</label>
-    <input type="text" name="last_name" required>
+    <ul>
+      <li>
+        <label for="first_name">First name:</label>
+        <input type="text" name="first_name" required autofocus>
+      </li>
+      <li>
+        <label for="last_name">Last name:</label>
+        <input type="text" name="last_name" required>
+      </li>
+    </ul>
     <input type="submit">
   </form>
 </article>

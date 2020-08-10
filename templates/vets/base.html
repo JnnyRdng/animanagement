@@ -4,14 +4,17 @@
 
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/vets/style.css') }}">
+{% block page_css %}
+
+{% endblock page_css %}
 {% endblock css %}
 
 
 {% block side_nav %}
 <nav class="side-nav">
   <ul>
-    <li><a href="/vets">All Vets</a></li>
-    <li><a href="/vets/new">Hire Vet</a></li>
+    <li {% if sidenav == "all" %}class="active" {% endif %}><a href="/vets">All Vets</a></li>
+    <li {% if sidenav == "new" %}class="active" {% endif %}><a href="/vets/new">Hire Vet</a></li>
   </ul>
 </nav>
 {% endblock side_nav %}

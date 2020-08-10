@@ -1,28 +1,45 @@
 {% extends 'vets/base.html' %}
 
-
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/vets/show.css') }} ">
+{% endblock page_css %}
 {% block content %}
 <article class="show-single">
-  <section>
+  <header>
     <h2>{{ vet.first_name }} {{ vet.last_name }}</h2>
-    <a href="/vets/{{vet.id}}/edit">Edit details</a>
-    <aside>
-      {% if animals|length > 0 %}
-      <h3>Animals in {{vet.first_name}}'s care</h3>
-      {% for animal in animals %}
-      <section>
-        <h4>{{ animal.name }}</h4>
-        <h5>{{ animal.species.capitalize() }}</h5>
-        <h5>Date registered: {{ animal.print_registered('print_nice') }}</h5>
-        <a href="/animals/{{animal.id}}">View animal</a>
-      </section>
-      {% endfor %}
-      {% else %}
-      <section>
+  </header>
+  <main>
+    <p>
+      <a href="/vets/{{vet.id}}/edit">Edit details</a>
+    </p>
+
+  </main>
+  <aside id="animals">
+    {% if animals|length > 0 %}
+    <article>
+      <header>
+        <h3>Animals in {{vet.first_name}}'s care</h3>
+      </header>
+      <main>
+        {% for animal in animals %}
+        <section>
+          <h4>{{ animal.name }}</h4>
+          <h5>{{ animal.species.capitalize() }}</h5>
+          <h5>Date registered: {{ animal.print_registered('print_nice') }}</h5>
+          <a href="/animals/{{animal.id}}">View animal</a>
+        </section>
+        {% endfor %}
+      </main>
+    </article>
+
+    {% else %}
+    <article>
+      <header>
         <h3>No animals in {{vet.first_name}}'s care right now</h3>
-      </section>
-      {% endif %}
-    </aside>
-  </section>
+      </header>
+    </article>
+
+    {% endif %}
+  </aside>
 </article>
 {% endblock content %}

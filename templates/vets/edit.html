@@ -1,13 +1,21 @@
 {% extends 'vets/base.html' %}
 
-
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/form.css') }} ">
+{% endblock page_css %}
 {% block content %}
-<article class="edit">
+<article class="form">
   <form action="/vets/{{ vet.id }}" method="post">
-    <label for="first_name">First name:</label>
-    <input type="text" name="first_name" required autofocus value="{{ vet.first_name }}">
-    <label for="last_name">Last name:</label>
-    <input type="text" name="last_name" required value="{{ vet.last_name }}">
+    <ul>
+      <li>
+        <label for="first_name">First name:</label>
+        <input type="text" name="first_name" required autofocus value="{{ vet.first_name }}">
+      </li>
+      <li>
+        <label for="last_name">Last name:</label>
+        <input type="text" name="last_name" required value="{{ vet.last_name }}">
+      </li>
+    </ul>
     <input type="submit">
   </form>
 </article>
