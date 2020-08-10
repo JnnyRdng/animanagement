@@ -14,8 +14,11 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0px;
 }
 
-.show-all>h2 {
+.show-all>header {
     grid-column-start: span 2;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
 img {

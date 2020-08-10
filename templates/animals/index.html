@@ -7,11 +7,23 @@
 
 {% block content %}
 <article class="show-all">
-  {% if admitted != undefined %}
-  <h2>Animals in vet surgery</h2>
-  {% else %}
-  <h2>All animals</h2>
-  {% endif %}
+  <header>
+    {% if admitted != undefined %}
+    <h2>Animals in vet surgery</h2>
+    {% else %}
+    <h2>All animals</h2>
+    {% endif %}
+    <form action="/animals" method="post">
+      <input type="hidden" value="search">
+      <input list="animal_names" name="animal_name">
+      <datalist id="animal_names">
+        {% for animal in animals %}
+        <option value="{{ animal.name }}">{{ animal.name }}</option>
+        {% endfor %}
+      </datalist>
+      <input type="submit" value="Search">
+    </form>
+  </header>
   {% for animal in animals|sort(reverse=true, attribute="date_registered") %}
   <section class="animal-card">
     <main>
