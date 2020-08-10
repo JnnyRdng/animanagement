@@ -3,6 +3,11 @@
 
 {% block content %}
 <article class="show-all">
+  {% if admitted != undefined %}
+  <h2>Animals in vet surgery</h2>
+  {% else %}
+  <h2>All animals</h2>
+  {% endif %}
   {% for animal in animals|sort(reverse=true, attribute="date_registered") %}
   <section class="animal-card">
     <main>

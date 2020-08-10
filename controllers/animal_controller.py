@@ -17,6 +17,15 @@ def index():
     return render_template("animals/index.html", title="Animals", animals=animals)
 
 
+@animal_blueprint.route("/animals/admitted")
+def admitted():
+    animals = animal_repository.select_all()
+    checked_in_animals = [animal for animal in animals if animal.checked_in]
+    return render_template(
+        "animals/index.html", title="Animals", animals=checked_in_animals, admitted=True
+    )
+
+
 # show
 # /animals/<id> GET
 @animal_blueprint.route("/animals/<id>")
