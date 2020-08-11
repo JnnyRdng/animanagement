@@ -45,6 +45,7 @@ CREATE TABLE animals (
 CREATE TABLE treatments (
     id SERIAL PRIMARY KEY,
     description VARCHAR(255),
+    start TIMESTAMP,
     duration INTERVAL,
     recovery INTERVAL,
     cost INT,

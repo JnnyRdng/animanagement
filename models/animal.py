@@ -67,3 +67,13 @@ class Animal:
     def print_registered(self, which):
         dh = DateHelper()
         return getattr(dh, which)(self.date_registered)
+
+    def where(self, treatment):
+        dh = DateHelper()
+        now = dh.now()
+        if now < treatment.start + treatment.duration:
+            return "treatment"
+        elif now < treatment.start + treatment.duration + treatment.recovery:
+            return "recovery"
+        else:
+            return False

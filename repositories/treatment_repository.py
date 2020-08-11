@@ -6,9 +6,10 @@ from models.treatment import Treatment
 
 
 def save(treatment):
-    sql = "INSERT INTO treatments (description, duration, recovery, cost, animal_id) VALUES (%s, %s, %s, %s, %s) RETURNING id"
+    sql = "INSERT INTO treatments (description, start, duration, recovery, cost, animal_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
     values = [
         treatment.description,
+        treatment.start,
         treatment.duration,
         treatment.recovery,
         treatment.cost,
@@ -33,6 +34,7 @@ def select(id):
             animal,
             row["id"],
         )
+        treatment.start = row["start"]
     return treatment
 
 
@@ -50,6 +52,7 @@ def select_all():
             animal,
             row["id"],
         )
+        treatment.start = row["start"]
         treatments.append(treatment)
     return treatments
 
@@ -66,9 +69,10 @@ def delete_all():
 
 
 def update(treatment):
-    sql = "UPDATE treatments SET (description, duration, recovery, cost, animal_id) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE treatments SET (description, start, duration, recovery, cost, animal_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [
         treatment.description,
+        treatment.start,
         treatment.duration,
         treatment.recovery,
         treatment.cost,

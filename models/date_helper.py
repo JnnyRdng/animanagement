@@ -31,3 +31,6 @@ class DateHelper:
         return datetime.timedelta(
             days=ints[0], hours=ints[1], minutes=ints[2], seconds=ints[3]
         )
+
+    def now(self):
+        return datetime.datetime.now()

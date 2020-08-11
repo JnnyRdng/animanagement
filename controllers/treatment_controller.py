@@ -43,6 +43,8 @@ def create():
     cost = request.form["cost"]
     animal = animal_repository.select(request.form["animal_id"])
     treatment = Treatment(description, duration, recovery, cost, animal)
+    start = dh.now()
+    treatment.start = start
     treatment_repository.save(treatment)
     return redirect(f"animals/{animal.id}")
 
@@ -71,6 +73,11 @@ def update(id):
     cost = request.form["cost"]
     animal = animal_repository.select(request.form["animal_id"])
     treatment = Treatment(description, duration, recovery, cost, animal, id)
+    if "start" in request.form:
+        start = dh.now()
+    else:
+        start = treatment_repository.select(id).start
+    treatment.start = start
     treatment_repository.update(treatment)
     return redirect(f"animals/{animal.id}")
 
