@@ -12,6 +12,24 @@ class Treatment:
         self.animal = animal
         self.id = id
 
-    def start_treatment(self):
+    def start_treatment(self, time=None):
+        if time is None:
+            dh = DateHelper()
+            self.start = dh.now()
+        else:
+            self.start = time
+
+    def print_start(self):
         dh = DateHelper()
-        self.start = dh.now()
+        start_time = dh.print_nice(self.start)
+        return start_time
+
+    def print_duration(self):
+        dh = DateHelper()
+        treatment_time = self.start + self.duration
+        return dh.print_nice(treatment_time)
+
+    def print_recovery(self):
+        dh = DateHelper()
+        recovery_time = self.start + self.duration + self.recovery
+        return dh.print_nice(recovery_time)

@@ -27,6 +27,7 @@ class Animal:
         self.checked_in = checked_in
         self.id = id
         self.records = 0
+        self.location = ""
 
     def check_out(self):
         # if already checked out, return None
@@ -71,9 +72,19 @@ class Animal:
     def where(self, treatment):
         dh = DateHelper()
         now = dh.now()
-        if now < treatment.start + treatment.duration:
-            return "treatment"
+        if treatment is None:
+            self.checked_in = False
+            self.location = ""
+            return
+        elif now < treatment.start + treatment.duration:
+            self.checked_in = True
+            self.location = "treatment"
+            return
         elif now < treatment.start + treatment.duration + treatment.recovery:
-            return "recovery"
+            self.checked_in = True
+            self.location = "recovery"
+            return
         else:
-            return False
+            self.checked_in = False
+            self.location = ""
+            return

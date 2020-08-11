@@ -6,6 +6,7 @@ import repositories.animal_repository as animal_repository
 import repositories.owner_repository as owner_repository
 import repositories.vet_repository as vet_repository
 import repositories.record_repository as record_repository
+import repositories.treatment_repository as treatment_repository
 
 animal_blueprint = Blueprint("animals", __name__)
 search = False
@@ -55,9 +56,18 @@ def search_results():
 @animal_blueprint.route("/animals/<id>")
 def show(id):
     animal = animal_repository.select(id)
+    treatment = treatment_repository.select(animal)
+    animal.where(treatment)
+    if not animal.checked_in and treatment is not None:
+        treatment_repository.delete(treatment.id)
+        treatment = None
     records = record_repository.records_by_animal(animal)
     return render_template(
-        "animals/show.html", title="Animal", animal=animal, records=records,
+        "animals/show.html",
+        title="Animal",
+        animal=animal,
+        records=records,
+        treatment=treatment,
     )
 
 

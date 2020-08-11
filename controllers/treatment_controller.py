@@ -43,16 +43,15 @@ def create():
     cost = int(float(request.form["cost"]) * 100)
     animal = animal_repository.select(request.form["animal_id"])
     treatment = Treatment(description, duration, recovery, cost, animal)
-    start = dh.now()
-    treatment.start = start
-    print(treatment.__dict__)
+    treatment.start_treatment()
     treatment_repository.save(treatment)
     return redirect(f"animals/{animal.id}")
 
 
-@treatment_blueprint.route("/treatments/<id>/edit")
-def edit(id):
-    treatment = treatment_repository.select(id)
+@treatment_blueprint.route("/treatments/<animal_id>/edit")
+def edit(animal_id):
+    animal = animal_repository.select(animal_id)
+    treatment = treatment_repository.select(animal)
     duration = dh.list_delta(treatment.duration)
     recovery = dh.list_delta(treatment.recovery)
     return render_template(
@@ -81,17 +80,17 @@ def update(id):
     animal = animal_repository.select(request.form["animal_id"])
     treatment = Treatment(description, duration, recovery, cost, animal, id)
     if "start" in request.form:
-        start = dh.now()
+        treatment.start_treatment()
     else:
         start = treatment_repository.select(id).start
-    treatment.start = start
-    print(treatment.__dict__)
+        treatment.start_treatment(start)
     treatment_repository.update(treatment)
     return redirect(f"/animals/{animal.id}")
 
 
-@treatment_blueprint.route("/treatments/<id>/delete")
-def delete(id):
-    treatment = treatment_repository.select(id)
-    treatment_repository.delete(id)
+@treatment_blueprint.route("/treatments/<animal_id>/delete")
+def delete(animal_id):
+    animal = animal_repository.select(animal_id)
+    treatment = treatment_repository.select(animal)
+    treatment_repository.delete(treatment.id)
     return redirect(f"/animals/{treatment.animal.id}")

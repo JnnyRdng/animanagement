@@ -13,10 +13,14 @@
     <p>Breed: {{ animal.breed }}</p>
     <p>DOB: {{ animal.print_dob("print_date") }} ({{ animal.get_age() }})</p>
     <p>Registered: {{ animal.print_registered("print_nice") }}</p>
-    {% if animal.checked_in %}
-    <span class="checked-in">✓</span>
+    {% if animal.location != "" %}
+    {% if animal.location == "treatment" %}
+    <span class="checked-in treatment">✓ in treatment</span>
     {% else %}
-    <span class="checked-out">✗</span>
+    <span class="checked-in recovery">✓ in recovery</span>
+    {% endif %}
+    {% else %}
+    <span class="checked-out">✗ not admitted</span>
     {% endif %}
 
   </main>
@@ -28,10 +32,29 @@
     </p>
   </aside>
   <footer>
+    {% if treatment == None %}
     <a href="/treatments/new/{{animal.id}}">Add treatment</a>
+    {% endif %}
     <a href="/animals/{{animal.id}}/edit">Edit details</a>
-    <a href="/animals/{{animal.id}}/delete">Remove from system</a>
+    <a class="delete" href="/animals/{{animal.id}}/delete">Remove from system</a>
   </footer>
+  {% if treatment != None %}
+  <section id="treatment">
+    <header>
+      <h3>Undergoing {{ animal.location }}</h3>
+    </header>
+    <main>
+      <p>Treatment started at: {{ treatment.print_start() }}</p>
+      {% if animal.location == "treatment" %}
+      <p>Treatment will finish at: {{ treatment.print_duration() }}</p>
+      {% else %}
+      <p>Treatment finished at: {{ treatment.print_duration() }}</p>
+      {% endif %}
+      <p>Recovery will finish at: {{ treatment.print_recovery() }}</p>
+    </main>
+    <footer><a class="delete" href="/treatments/{{ animal.id }}/delete">Cancel treatment</a></footer>
+  </section>
+  {% endif %}
   <section id="records">
     {% if records|length > 0 %}
     <article>

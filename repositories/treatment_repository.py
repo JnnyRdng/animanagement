@@ -19,13 +19,13 @@ def save(treatment):
     treatment.id = id
 
 
-def select(id):
+def select(animal):
     treatment = None
-    sql = "SELECT * FROM treatments WHERE id = %s"
-    values = [id]
-    row = run_sql(sql, values)[0]
-    if row is not None:
-        animal = animal_repository.select(row["animal_id"])
+    sql = "SELECT * FROM treatments WHERE animal_id = %s"
+    values = [animal.id]
+    row = run_sql(sql, values)
+    if len(row) > 0:
+        row = row[0]
         treatment = Treatment(
             row["description"],
             row["duration"],
