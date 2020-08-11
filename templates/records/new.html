@@ -1,31 +1,33 @@
-{% extends 'base.html' %}
-
+{% extends 'records/base.html' %}
+{% set sidenav = "new" %}
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/form.css') }} ">
+{% endblock page_css %}
 
 {% block content %}
-<article class="new">
-  <h2>Add to medical records</h2>
+<article class="form">
+  <header>
+    <a href="/animals/{{ animal.id }}">&lt; Back</a>
+    <h2>New</h2>
+  </header>
   <form action="/records" method="post">
-    <label for="date">Date:</label>
-    <input type="datetime-local" name="date" value="{{ current_time }}" required>
-
-    <label for="entry">Entry:</label>
-    <textarea name="entry" required></textarea>
-
-    {% if animal != None %}
-    <label for="display_animal">Animal:</label>
-    <input type="text" name="display_animal" value="{{ animal.name }}" disabled>
-    <input type="hidden" value="{{ animal.id }}" name="animal_id">
-
-    {% else %}
-
-    <label for="animal_id">Animal:</label>
-    <select name="animal_id" required>
-      <option value="" selected disabled>Choose animal</option>
-      {% for animal in animals %}
-      <option value="{{ animal.id }}">{{ animal.name }}</option>
-      {% endfor %}
-      {% endif %}
-    </select>
+    <ul>
+      <li>
+        <label for="date">Date:</label>
+        <input type="datetime-local" name="date" value="{{ current_time }}" required>
+      </li>
+      <li>
+        <label for="display_animal">Animal:</label>
+        <input type="text" name="display_animal" value="{{ animal.name }}" disabled>
+        <input type="hidden" value="{{ animal.id }}" name="animal_id">
+      </li>
+      <li class="full-width">
+        <div>
+          <label for="entry">Entry:</label>
+          <textarea name="entry" autofocus required></textarea>
+        </div>
+      </li>
+    </ul>
 
     <input type="submit">
   </form>

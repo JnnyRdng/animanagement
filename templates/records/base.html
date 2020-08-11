@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 
-{% set active_page = "records" %}
 
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/records/style.css') }}">
+{% block page_css %}
+
+{% endblock page_css %}
 {% endblock css %}
 
 
 {% block side_nav %}
 <nav class="side-nav">
   <ul>
-    <li><a href="/records">All records</a></li>
-    <li><a href="/records/new">New records</a></li>
+    <!-- <li {% if sidenav == "new" %}class="active" {% endif %}><a href="/records/new">New record</a></li> -->
   </ul>
 </nav>
 {% endblock side_nav %}

@@ -1,18 +1,35 @@
 {% extends 'records/base.html' %}
-
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/records/show.css') }} ">
+{% endblock page_css %}
 {% block content %}
 <article class="show-single">
-  <section>
-    <h3>Date: {{ record.print_date("print_nice") }}</h3>
-    <p>{{ record.entry }}</p>
-    <a href="/records/{{ record.id }}/edit">Edit</a>
-    <a href="/records/{{ record.id }}/delete">Delete</a>
-  </section>
-  <aside>
-    <h3>{{ record.animal.name }}</h3>
-    <h4>Species: {{ record.animal.species }}</h4>
-    <h4>Checked in: {{ record.animal.checked_in }}</h4>
-    <a href="/animals/{{ record.animal.id }}">View animal</a>
+  <header>
+    <a href="/animals/{{record.animal.id}}">&lt; Back</a>
+    <h2>{{ record.print_date("print_nice") }}</h2>
+  </header>
+  <main>
+    <section>
+      <textarea disabled>{{ record.entry }}</textarea>
+    </section>
+    <footer>
+      <a href="/records/{{ record.id }}/edit">Edit</a>
+      <a href="/records/{{ record.id }}/delete" class="delete">Delete</a>
+    </footer>
+  </main>
+  <aside class="animals">
+    <header>
+      <h3>{{ record.animal.name }}</h3>
+    </header>
+    <article>
+      <p>Species: <strong>{{ record.animal.species }}</strong></p>
+      <p>Breed: <strong>{{ record.animal.breed }}</strong></p>
+      <p>Registered: <strong>{{ record.animal.print_registered("print_date") }}</strong></p>
+      <p>Owner: <strong>{{ record.animal.owner.first_name }} {{ record.animal.owner.last_name }}</strong></p>
+    </article>
+    <footer>
+      <a href="/animals/{{ record.animal.id }}">View animal</a>
+    </footer>
   </aside>
 </article>
 {% endblock content %}
