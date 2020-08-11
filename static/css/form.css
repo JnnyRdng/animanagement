@@ -68,3 +68,13 @@ textarea {
     line-height: 1.5;
     box-sizing: border-box;
 }
+
+.timepicker {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.small-text {
+    font-size: 0.7rem;
+}

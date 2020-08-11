@@ -1,0 +1,75 @@
+{% extends 'treatments/base.html' %}
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/form.css') }} ">
+{% endblock page_css %}
+
+{% block content %}
+<article class="form">
+  <header>
+    <a href="/animals/{{ treatment.id }}">&lt; Back</a>
+    <h2>New</h2>
+  </header>
+  <form action="/treatments/{{ treatment.id }}" method="post">
+    <ul>
+      <li>
+        <label for="description">Description: </label>
+        <input type="text" name="description" required value="{{ treatment.description }}">
+      </li>
+      <li class="timepicker">
+        <label for="duration">Duration: </label>
+        <label class="small-text" for="duration_days">Days: </label>
+        <select name="duration_days">
+          {% for n in range(0, 32) %}
+          <option {% if duration[0] == n %}selected{% endif %} value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+        <label class="small-text" for="duration_hours">Hours: </label>
+        <select name="duration_hours">
+          {% for n in range(0, 24) %}
+          <option {% if duration[1] == n %}selected{% endif %} value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+        <label class="small-text" for="duration_minutes">Mins: </label>
+        <select name="duration_minutes">
+          {% for n in range(0, 60, 5) %}
+          <option {% if duration[2] == n %}selected{% endif %} value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+      </li>
+      <li class="timepicker">
+        <label for="recovery">Recovery: </label>
+        <label class="small-text" for="recovery_days">Days: </label>
+        <select name="recovery_days">
+          {% for n in range(0, 32) %}
+          <option {% if recovery[0] == n %}selected{% endif %} value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+        <label class="small-text" for="recovery_hours">Hours: </label>
+        <select name="recovery_hours">
+          {% for n in range(0, 24) %}
+          <option {% if recovery[1] == n %}selected{% endif %} value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+        <label class="small-text" for="recovery_minutes">Mins: </label>
+        <select name="recovery_minutes">
+          {% for n in range(0, 60, 5) %}
+          <option {% if recovery[2] == n %}selected{% endif %} value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+      </li>
+      <li>
+        <label for="cost">Cost (£): </label>
+        <input type="number" min="0.00" step="0.01" name="cost" required
+          value="{{ '{:.2f}'.format(treatment.cost / 100) }}">
+      </li>
+      <li>
+        <label for="display_animal">Animal:</label>
+        <input type="text" name="display_animal" value="{{ treatment.animal.name }}" disabled>
+        <input type="hidden" value="{{ treatment.animal.id }}" name="animal_id">
+      </li>
+    </ul>
+
+    <input type="submit">
+  </form>
+</article>
+{% endblock content %}

@@ -27,7 +27,7 @@ def select(id):
     if row is not None:
         animal = animal_repository.select(row["animal_id"])
         treatment = Treatment(
-            row["decription"],
+            row["description"],
             row["duration"],
             row["recovery"],
             row["cost"],

@@ -32,5 +32,12 @@ class DateHelper:
             days=ints[0], hours=ints[1], minutes=ints[2], seconds=ints[3]
         )
 
+    def list_delta(self, delta):
+        days = delta.days
+        hours = delta.seconds // 3600
+        minutes = delta.seconds // 60 % 60
+        seconds = 0
+        return [days, hours, minutes, seconds]
+
     def now(self):
         return datetime.datetime.now()
