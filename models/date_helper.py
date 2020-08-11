@@ -24,3 +24,10 @@ class DateHelper:
 
     def print_datetime_local(self, date):
         return date.strftime("%Y-%m-%dT%H:%M")
+
+    def time_delta(self, dmhs):
+        time = dmhs.split(":")
+        ints = [int(unit) for unit in time]
+        return datetime.timedelta(
+            days=ints[0], hours=ints[1], minutes=ints[2], seconds=ints[3]
+        )

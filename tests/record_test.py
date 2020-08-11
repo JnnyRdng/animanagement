@@ -24,8 +24,8 @@ class TestRecord(unittest.TestCase):
             self.owner,
             self.vet,
             self.dh.make_datetime("2020-08-06 13:05:00"),
+            763,
         )
-        self.animal.id = 763
         self.record = Record(
             self.dh.make_datetime("2020-05-03 17:09:03"), "Cat is sick.", self.animal
         )
