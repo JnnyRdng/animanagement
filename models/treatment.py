@@ -10,4 +10,3 @@ class Treatment:
         self.cost = cost
         self.animal = animal
         self.id = id
-        self.end_date = None

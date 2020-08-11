@@ -1,7 +1,5 @@
 from db.run_sql import run_sql
 
-import repositories.vet_repository as vet_repository
-import repositories.owner_repository as owner_repository
 import repositories.animal_repository as animal_repository
 
 from models.record import Record
