@@ -19,6 +19,22 @@ class Treatment:
         else:
             self.start = time
 
+    def total(self, duration):
+        dh = DateHelper()
+        list = dh.list_delta(duration)
+        string = ""
+        if list[0] > 0:
+            string += f"{list[0]} days"
+        if list[1] > 0:
+            if string != "":
+                string += ", "
+            string += f"{list[1]} hours"
+        if list[2] > 0:
+            if string != "":
+                string += ", "
+            string += f"{list[2]} minutes"
+        return string
+
     def print_start(self):
         dh = DateHelper()
         start_time = dh.print_nice(self.start)

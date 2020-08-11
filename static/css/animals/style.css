@@ -38,14 +38,14 @@ img {
 
 .animal-card>main {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 5fr 1fr;
     gap: 20px;
     align-items: center;
 }
 
 .animal-card>footer {
     display: grid;
-    grid-template-columns: 6fr 1fr;
+    grid-template-columns: 1fr;
     gap: 20px;
     align-content: center;
     text-align: center;
@@ -65,16 +65,24 @@ img {
 }
 
 .checked-in {
+    display: block;
     padding: 10px;
     border-radius: 100px;
     color: var(--raisin-black);
+    width: 60%;
+    margin: auto;
+    text-align: center;
 }
 
 .checked-out {
+    display: block;
     padding: 10px;
     border-radius: 100px;
     color: var(--seashell);
     background-color: var(--cg-red);
+    width: 60%;
+    margin: auto;
+    text-align: center;
 }
 
 .treatment {

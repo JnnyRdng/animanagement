@@ -44,14 +44,20 @@
         <h4>{{ animal.species }}</h4>
         <h4>Registered: {{ animal.print_registered("print_date") }}</h4>
       </hgroup>
+      <aside>
+        {% if animal.checked_in %}
+        {% if animal.location == "treatment" %}
+        <span class="checked-in treatment">✓</span>
+        {% else %}
+        <span class="checked-in recovery">✓</span>
+        {% endif %}
+        {% else %}
+        <span class="checked-out">✗</span>
+        {% endif %}
+      </aside>
     </main>
     <footer>
       <a href="/animals/{{ animal.id }}">Show details</a>
-      {% if animal.checked_in %}
-      <span class="checked-in">✓</span>
-      {% else %}
-      <span class="checked-out">✗</span>
-      {% endif %}
     </footer>
 
   </section>

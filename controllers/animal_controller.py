@@ -23,8 +23,14 @@ def index():
         results = [
             animal for animal in animals if search.lower() in animal.name.lower()
         ]
+        for result in results:
+            treatment = treatment_repository.select(result)
+            result.where(treatment)
         search_term = search
         search = False
+    for animal in animals:
+        treatment = treatment_repository.select(animal)
+        animal.where(treatment)
 
     return render_template(
         "animals/index.html",
@@ -38,6 +44,9 @@ def index():
 @animal_blueprint.route("/animals/admitted")
 def admitted():
     animals = animal_repository.select_all()
+    for animal in animals:
+        treatment = treatment_repository.select(animal)
+        animal.where(treatment)
     checked_in_animals = [animal for animal in animals if animal.checked_in]
     return render_template(
         "animals/index.html", title="Animals", animals=checked_in_animals, admitted=True

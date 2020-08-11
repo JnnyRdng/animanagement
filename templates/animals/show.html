@@ -13,6 +13,14 @@
     <p>Breed: {{ animal.breed }}</p>
     <p>DOB: {{ animal.print_dob("print_date") }} ({{ animal.get_age() }})</p>
     <p>Registered: {{ animal.print_registered("print_nice") }}</p>
+
+  </main>
+  <aside>
+    <p>Owned by <a href="/owners/{{ animal.owner.id }}">{{ animal.owner.first_name }}
+        {{ animal.owner.last_name }}</a>
+    </p>
+    <p>Assigned to <a href="/vets/{{ animal.vet.id }}">{{ animal.vet.first_name }} {{ animal.vet.last_name }}</a>
+    </p>
     {% if animal.location != "" %}
     {% if animal.location == "treatment" %}
     <span class="checked-in treatment">✓ in treatment</span>
@@ -22,14 +30,6 @@
     {% else %}
     <span class="checked-out">✗ no treatment</span>
     {% endif %}
-
-  </main>
-  <aside>
-    <p>Owned by <a href="/owners/{{ animal.owner.id }}">{{ animal.owner.first_name }}
-        {{ animal.owner.last_name }}</a>
-    </p>
-    <p>Assigned to <a href="/vets/{{ animal.vet.id }}">{{ animal.vet.first_name }} {{ animal.vet.last_name }}</a>
-    </p>
   </aside>
   <footer>
     {% if treatment == None %}
@@ -41,16 +41,27 @@
   {% if treatment != None %}
   <section id="treatment">
     <header>
-      <h3>Undergoing {{ animal.location }}</h3>
+      <h3>Currently undergoing {{ animal.location }}</h3>
     </header>
     <main>
-      <p>Treatment started at: {{ treatment.print_start() }}</p>
-      {% if animal.location == "treatment" %}
-      <p>Treatment will finish at: {{ treatment.print_duration() }}</p>
-      {% else %}
-      <p>Treatment finished at: {{ treatment.print_duration() }}</p>
-      {% endif %}
-      <p>Recovery will finish at: {{ treatment.print_recovery() }}</p>
+      <div>
+        <label for="description">Description: </label>
+        <textarea name="description" disabled>{{ treatment.description }}</textarea>
+      </div>
+      <section>
+        <p>Treatment started at: {{ treatment.print_start() }}</p>
+        <p>Cost: £{{ '{:.2f}'.format(treatment.cost / 100) }}</p>
+      </section>
+      <aside>
+        <p>Treatment duration: {{ treatment.total(treatment.duration) }}</p>
+        <p>Recovery duration: {{ treatment.total(treatment.recovery) }}</p>
+        {% if animal.location == "treatment" %}
+        <p>Treatment will finish at: {{ treatment.print_duration() }}</p>
+        {% else %}
+        <p>Treatment finished at: {{ treatment.print_duration() }}</p>
+        {% endif %}
+        <p>Recovery will finish at: {{ treatment.print_recovery() }}</p>
+      </aside>
     </main>
     <footer><a class="delete" href="/treatments/{{ animal.id }}/delete">Cancel treatment</a></footer>
   </section>
