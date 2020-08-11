@@ -7,6 +7,7 @@ from models.date_helper import DateHelper
 import repositories.treatment_repository as treatment_repository
 import repositories.animal_repository as animal_repository
 
+dh = DateHelper()
 treatment_blueprint = Blueprint("treatments", __name__)
 
 # don't need index
@@ -29,8 +30,16 @@ def new(animal_id):
 @treatment_blueprint.route("/treatments", methods=["POST"])
 def create():
     description = request.form["description"]
-    duration = request.form["duration"]
-    recovery = request.form["recovery"]
+    days = request.form["duration_days"]
+    hours = request.form["duration_hours"]
+    minutes = request.form["duration_minutes"]
+    duration = dh.time_delta(f"{days}:{hours}:{minutes}:00")
+
+    days = request.form["recovery_days"]
+    hours = request.form["recovery_hours"]
+    minutes = request.form["recovery_minutes"]
+    recovery = dh.time_delta(f"{days}:{hours}:{minutes}:00")
+
     cost = request.form["cost"]
     animal = animal_repository.select(request.form["animal_id"])
     treatment = Treatment(description, duration, recovery, cost, animal)
@@ -49,8 +58,16 @@ def edit(id):
 @treatment_blueprint.route("/treatments/<id>", methods=["POST"])
 def update(id):
     description = request.form["description"]
-    duration = request.form["duration"]
-    recovery = request.form["recovery"]
+    days = request.form["duration_days"]
+    hours = request.form["duration_hours"]
+    minutes = request.form["duration_minutes"]
+    duration = dh.time_delta(f"{days}:{hours}:{minutes}:00")
+
+    days = request.form["recovery_days"]
+    hours = request.form["recovery_hours"]
+    minutes = request.form["recovery_minutes"]
+    recovery = dh.time_delta(f"{days}:{hours}:{minutes}:00")
+
     cost = request.form["cost"]
     animal = animal_repository.select(request.form["animal_id"])
     treatment = Treatment(description, duration, recovery, cost, animal, id)

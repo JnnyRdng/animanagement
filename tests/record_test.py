@@ -24,7 +24,6 @@ class TestRecord(unittest.TestCase):
             self.owner,
             self.vet,
             self.dh.make_datetime("2020-08-06 13:05:00"),
-            763,
         )
         self.record = Record(
             self.dh.make_datetime("2020-05-03 17:09:03"), "Cat is sick.", self.animal
@@ -46,6 +45,7 @@ class TestRecord(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_record_has_animal_id(self):
+        self.animal.id = 763
         expected = 763
         actual = self.record.animal.id
         self.assertEqual(expected, actual)
