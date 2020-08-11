@@ -162,3 +162,7 @@ body>main>article {
 body>footer {
     background-color: var(--blue-sapphire);
 }
+
+input[type=submit] {
+    font-family: phoreuscherokee, serif;
+}
