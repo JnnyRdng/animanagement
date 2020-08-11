@@ -168,3 +168,15 @@ body>main>article {
 body>footer {
     background-color: var(--blue-sapphire);
 }
+
+.delete {
+    padding: 10px;
+    background-color: var(--cg-red);
+    color: var(--snow);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background-color: red;
+}

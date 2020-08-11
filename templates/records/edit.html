@@ -13,7 +13,7 @@
     <ul>
       <li>
         <label for="date">Date:</label>
-        <input type="text" name="date" required value="{{ record.date }}">
+        <input type="datetime-local" name="date" required value="{{ record.print_date('print_datetime_local') }}">
       </li>
       <li>
         <label for="display_animal">Animal:</label>
