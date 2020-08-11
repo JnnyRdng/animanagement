@@ -31,3 +31,14 @@ class TestVet(unittest.TestCase):
         expected = 5
         actual = self.vet.max_animals
         self.assertEqual(expected, actual)
+
+    def test_animal_count_is_0(self):
+        expected = 0
+        actual = self.vet.animal_count
+        self.assertEqual(expected, actual)
+
+    def test_set_count(self):
+        self.vet.set_count(6)
+        expected = 6
+        actual = self.vet.animal_count
+        self.assertEqual(expected, actual)

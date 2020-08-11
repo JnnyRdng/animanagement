@@ -4,3 +4,7 @@ class Vet:
         self.last_name = last_name
         self.id = id
         self.max_animals = 5
+        self.animal_count = 0
+
+    def set_count(self, num):
+        self.animal_count = num
