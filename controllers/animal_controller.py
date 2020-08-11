@@ -15,7 +15,6 @@ search = False
 @animal_blueprint.route("/animals")
 def index():
     global search
-    animals = []
     results = []
     search_term = False
     animals = animal_repository.select_all()
