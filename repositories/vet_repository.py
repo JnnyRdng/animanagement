@@ -4,8 +4,8 @@ from models.vet import Vet
 
 
 def save(vet):
-    sql = "INSERT INTO vets (first_name, last_name) VALUES (%s, %s) RETURNING id"
-    values = [vet.first_name, vet.last_name]
+    sql = "INSERT INTO vets (first_name, last_name, max_animals) VALUES (%s, %s, %s) RETURNING id"
+    values = [vet.first_name, vet.last_name, vet.max_animals]
     id = run_sql(sql, values)[0]["id"]
     vet.id = id
 
@@ -16,7 +16,7 @@ def select(id):
     values = [id]
     row = run_sql(sql, values)[0]
     if row is not None:
-        vet = Vet(row["first_name"], row["last_name"], row["id"])
+        vet = Vet(row["first_name"], row["last_name"], row["max_animals"], row["id"])
     return vet
 
 
@@ -25,7 +25,7 @@ def select_all():
     sql = "SELECT * FROM vets"
     results = run_sql(sql)
     for row in results:
-        vet = Vet(row["first_name"], row["last_name"], row["id"])
+        vet = Vet(row["first_name"], row["last_name"], row["max_animals"], row["id"])
         vets.append(vet)
     return vets
 
@@ -42,6 +42,6 @@ def delete_all():
 
 
 def update(vet):
-    sql = "UPDATE vets SET (first_name, last_name) = (%s, %s) WHERE id = %s"
-    values = [vet.first_name, vet.last_name, vet.id]
+    sql = "UPDATE vets SET (first_name, last_name, max_animals) = (%s, %s, %s) WHERE id = %s"
+    values = [vet.first_name, vet.last_name, vet.max_animals, vet.id]
     run_sql(sql, values)

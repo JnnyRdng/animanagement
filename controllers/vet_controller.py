@@ -42,6 +42,11 @@ def search_results():
 def show(id):
     vet = vet_repository.select(id)
     animals = animal_repository.animals_by_vet(vet)
+    count = len(animals)
+    vet.set_count(count)
+    if vet.animal_count >= vet.max_animals:
+        vet.set_busy()
+
     return render_template("/vets/show.html", title="Vet", vet=vet, animals=animals)
 
 
@@ -58,7 +63,8 @@ def new():
 def create():
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
-    vet = Vet(first_name, last_name)
+    max_animals = request.form["max_animals"]
+    vet = Vet(first_name, last_name, max_animals)
     vet_repository.save(vet)
     return redirect("/vets")
 
@@ -78,7 +84,8 @@ def update(id):
     # vet = vet_repository.select(id)
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
-    vet = Vet(first_name, last_name, id)
+    max_animals = request.form["max_animals"]
+    vet = Vet(first_name, last_name, max_animals, id)
     vet_repository.update(vet)
     return redirect(f"/vets/{id}")
 

@@ -116,7 +116,6 @@ def animals_by_owner(owner):
 
 
 def assigned_to(vet):
-    animals = 0
     sql = "SELECT COUNT(*) FROM animals WHERE vet_id = %s"
     values = [vet.id]
     result = run_sql(sql, values)[0]["count"]

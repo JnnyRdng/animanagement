@@ -7,13 +7,24 @@
 <article class="show-single">
   <header>
     <h2>{{ vet.first_name }} {{ vet.last_name }}</h2>
+    {% if vet.busy %}
+    <section class="busy">
+      <p>Busy!</p>
+    </section>
+    {% else %}
+    <section class="available">
+      <p>Available</p>
+    </section>
+    {% endif %}
   </header>
   <main>
+    <p>Max animals in care: <strong>{{ vet.max_animals }}</strong></p>
+  </main>
+  <footer>
     <p>
       <a href="/vets/{{vet.id}}/edit">Edit details</a>
     </p>
-
-  </main>
+  </footer>
   <aside id="animals">
     {% if animals|length > 0 %}
     <article>

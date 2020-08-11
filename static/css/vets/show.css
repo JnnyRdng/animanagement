@@ -5,6 +5,10 @@
 
 .show-single>header {
     grid-area: header;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 100px;
 }
 
 .show-single>main {
@@ -51,4 +55,18 @@
     padding: 10px 14px 30px;
     background-color: var(--snow);
     border: 1px solid var(--black-transp);
+}
+
+.busy {
+    width: 100%;
+    background-color: var(--cg-red);
+    color: var(--seashell);
+    text-align: center;
+}
+
+.available {
+    width: 100%;
+    background-color: var(--june-bud);
+    color: var(--raisin-black);
+    text-align: center;
 }
