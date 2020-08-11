@@ -67,8 +67,7 @@ img {
 .checked-in {
     padding: 10px;
     border-radius: 100px;
-    color: var(--seashell);
-    background-color: green;
+    color: var(--raisin-black);
 }
 
 .checked-out {
@@ -76,4 +75,13 @@ img {
     border-radius: 100px;
     color: var(--seashell);
     background-color: var(--cg-red);
+}
+
+.treatment {
+    background-color: var(--cerulean-crayola);
+    color: var(--seashell);
+}
+
+.recovery {
+    background-color: var(--june-bud);
 }

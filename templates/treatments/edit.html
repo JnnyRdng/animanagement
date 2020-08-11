@@ -10,6 +10,7 @@
     <h2>Edit</h2>
   </header>
   <form action="/treatments/{{ treatment.id }}" method="post">
+    <p>Treatment started at: {{ treatment.print_start() }}</p>
     <ul>
       <li>
         <label for="description">Description: </label>
@@ -68,7 +69,7 @@
         <input type="hidden" value="{{ treatment.animal.id }}" name="animal_id">
       </li>
       <li>
-        <label for="start">Reset start time? ({{ treatment.print_start() }})</label>
+        <label for="start">Reset start time? </label>
         <input type="checkbox" name="start">
       </li>
     </ul>
