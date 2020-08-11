@@ -10,20 +10,31 @@
   <header>
     {% if admitted != undefined %}
     <h2>Animals in vet surgery</h2>
+    {% elif search %}
+    {% if results|length %}
+    <h2>Search results</h2>
+    {% else %}
+    <h2>No results found</h2>
+    {% endif %}
     {% else %}
     <h2>All animals</h2>
     {% endif %}
-    <form action="/animals" method="post">
+    <form action="/animals/search" method="post">
       <input type="hidden" value="search">
-      <input list="animal_names" name="animal_name">
+      <label for="animal_name">Search: </label>
+      <input list="animal_names" name="animal_name" placeholder="Animal name"
+        value="{% if search %}{{ search }}{% endif %}">
       <datalist id="animal_names">
         {% for animal in animals|sort(attribute="name") %}
         <option value="{{ animal.name }}">{{ animal.name }}</option>
         {% endfor %}
       </datalist>
-      <input type="submit" value="Search">
+      <input type="submit" value="Go">
     </form>
   </header>
+  {% if results|length %}
+  {% set animals = results %}
+  {% endif %}
   {% for animal in animals|sort(reverse=true, attribute="date_registered") %}
   <section class="animal-card">
     <main>

@@ -8,13 +8,34 @@ import repositories.vet_repository as vet_repository
 import repositories.record_repository as record_repository
 
 animal_blueprint = Blueprint("animals", __name__)
+search = False
 
 # index
 # /animals GET
 @animal_blueprint.route("/animals")
 def index():
-    animals = animal_repository.select_all()
-    return render_template("animals/index.html", title="Animals", animals=animals)
+    global search
+    animals = []
+    results = []
+    if search:
+        animals = animal_repository.select_all()
+        results = [
+            animal for animal in animals if search.lower() in animal.name.lower()
+        ]
+        searched = search
+        search = False
+        print(searched)
+    else:
+        searched = False
+        animals = animal_repository.select_all()
+
+    return render_template(
+        "animals/index.html",
+        title="Animals",
+        animals=animals,
+        results=results,
+        search=searched,
+    )
 
 
 @animal_blueprint.route("/animals/admitted")
@@ -24,6 +45,13 @@ def admitted():
     return render_template(
         "animals/index.html", title="Animals", animals=checked_in_animals, admitted=True
     )
+
+
+@animal_blueprint.route("/animals/search", methods=["POST"])
+def search_results():
+    global search
+    search = request.form["animal_name"]
+    return redirect("/animals")
 
 
 # show
