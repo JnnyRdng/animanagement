@@ -5,7 +5,7 @@ from models.vet import Vet
 
 class TestVet(unittest.TestCase):
     def setUp(self):
-        self.vet = Vet("Kevin", "Bacon")
+        self.vet = Vet("Kevin", "Bacon", 5)
 
     def test_vet_has_first_name(self):
         expected = "Kevin"

@@ -10,7 +10,7 @@ from models.date_helper import DateHelper
 class TestAnimal(unittest.TestCase):
     def setUp(self):
         self.dh = DateHelper()
-        self.vet = Vet("Mark", "Bridges")
+        self.vet = Vet("Mark", "Bridges", 3)
         self.address = Address("9", "Big Road", "Vatican City", "PO1 1PE")
         self.owner = Owner(
             "Kevin", "Stevens", self.address, "015825536874", "kevin@mail.com"

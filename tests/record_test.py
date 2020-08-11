@@ -11,7 +11,7 @@ from models.date_helper import DateHelper
 class TestRecord(unittest.TestCase):
     def setUp(self):
         self.dh = DateHelper()
-        self.vet = Vet("Mark", "Bridges")
+        self.vet = Vet("Mark", "Bridges", 3)
         self.address = Address("14", "Park Street", "London", "W1A 2SC")
         self.owner = Owner(
             "Kevin", "Stevens", self.address, "015825536874", "kevin@mail.com"

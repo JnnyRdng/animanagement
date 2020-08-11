@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS vets;
 CREATE TABLE vets (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
-    last_name VARCHAR(255)
+    last_name VARCHAR(255),
+    max_animals INT
 );
 
 CREATE TABLE addresses (
@@ -54,11 +55,11 @@ INSERT INTO owners (first_name, last_name, address_id, tel, email) VALUES ('Kevi
 INSERT INTO owners (first_name, last_name, address_id, tel, email) VALUES ('Steve', 'Baker', 2, '07762 919382', 'steve@email.com');
 INSERT INTO owners (first_name, last_name, address_id, tel, email) VALUES ('Michael', 'Martin', 3, '07626 172497', 'jeremy@email.com');
 
-INSERT INTO vets (first_name, last_name) VALUES ('John', 'Smith');
-INSERT INTO vets (first_name, last_name) VALUES ('Linda', 'Bridges');
-INSERT INTO vets (first_name, last_name) VALUES ('Sarah', 'Jackson');
-INSERT INTO vets (first_name, last_name) VALUES ('Hugh', 'Polson');
-INSERT INTO vets (first_name, last_name) VALUES ('James', 'Anderson');
+INSERT INTO vets (first_name, last_name, max_animals) VALUES ('John', 'Smith', 3);
+INSERT INTO vets (first_name, last_name, max_animals) VALUES ('Linda', 'Bridges', 2);
+INSERT INTO vets (first_name, last_name, max_animals) VALUES ('Sarah', 'Jackson', 5);
+INSERT INTO vets (first_name, last_name, max_animals) VALUES ('Hugh', 'Polson', 4);
+INSERT INTO vets (first_name, last_name, max_animals) VALUES ('James', 'Anderson', 4);
 
 INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Fluff', '2018-04-14', 'Cat', 'Maine Coon', 1, 1, '2020-08-06 11:42', false);
 INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Floof', '2017-07-23', 'Dog', 'Spaniel', 2, 2, '2020-08-06 14:13', true);
