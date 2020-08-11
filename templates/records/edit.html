@@ -6,7 +6,7 @@
 {% block content %}
 <article class="form">
   <header>
-    <a href="/animals/{{ record.animal.id }}">&lt; Back</a>
+    <a href="/records/{{ record.id }}">&lt; Back</a>
     <h2>Edit</h2>
   </header>
   <form action="/records/{{ record.id }}" method="post">
@@ -23,7 +23,7 @@
       <li class="full-width">
         <div>
           <label for="entry">Entry:</label>
-          <textarea name="entry" required>{{ record.entry }}</textarea>
+          <textarea name="entry" autofocus required>{{ record.entry }}</textarea>
         </div>
       </li>
     </ul>

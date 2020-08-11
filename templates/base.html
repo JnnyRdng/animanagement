@@ -15,14 +15,14 @@
 
 <body>
   <header>
-    <img id="logo" src="{{ url_for('static', filename='img/vet_dog_logo_light.png') }}" alt="Vet Surgery Logo">
+    <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Vet Surgery Logo">
     <h1>Animanagement</h1>
     <nav class="navigation">
       <ul>
         <li {% if active_page == "home" %}class="active" {% endif %}><a href="/">Home</a></li>
         <li {% if active_page == "vets" %}class="active" {% endif %}><a href="/vets">Vets</a></li>
-        <li {% if active_page == "animals" %}class="active" {% endif %}><a href="/animals">Animals</a></li>
         <li {% if active_page == "owners" %}class="active" {% endif %}><a href="/owners">Owners</a></li>
+        <li {% if active_page == "animals" %}class="active" {% endif %}><a href="/animals">Animals</a></li>
       </ul>
     </nav>
   </header>

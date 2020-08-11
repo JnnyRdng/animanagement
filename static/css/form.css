@@ -32,10 +32,6 @@ form>ul>li {
     align-items: start;
 }
 
-input, select, option, textarea {
-    font-family: inherit;
-}
-
 input[type=submit] {
     margin: 20px auto;
     padding: 10px;
