@@ -113,3 +113,11 @@ def animals_by_owner(owner):
         animal = select(row["id"])
         animals.append(animal)
     return animals
+
+
+def assigned_to(vet):
+    animals = 0
+    sql = "SELECT COUNT(*) FROM animals WHERE vet_id = %s"
+    values = [vet.id]
+    result = run_sql(sql, values)[0]["count"]
+    return result

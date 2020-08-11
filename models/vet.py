@@ -5,6 +5,13 @@ class Vet:
         self.id = id
         self.max_animals = 5
         self.animal_count = 0
+        self.busy = False
 
     def set_count(self, num):
         self.animal_count = num
+
+    def set_busy(self):
+        self.busy = True
+
+    def set_available(self):
+        self.busy = False

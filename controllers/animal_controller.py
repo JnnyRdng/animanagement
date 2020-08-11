@@ -67,6 +67,13 @@ def show(id):
 def new():
     owners = owner_repository.select_all()
     vets = vet_repository.select_all()
+    for vet in vets:
+        count = animal_repository.assigned_to(vet)
+        vet.set_count(count)
+        if vet.animal_count >= vet.max_animals:
+            vet.set_busy()
+        else:
+            vet.set_available()
     return render_template(
         "/animals/new.html", title="Register Animal", owners=owners, vets=vets,
     )
@@ -97,6 +104,13 @@ def edit(id):
     animal = animal_repository.select(id)
     # owners = owner_repository.select_all()
     vets = vet_repository.select_all()
+    for vet in vets:
+        count = animal_repository.assigned_to(vet)
+        vet.set_count(count)
+        if vet.animal_count >= vet.max_animals and animal.vet.id is not vet.id:
+            vet.set_busy()
+        else:
+            vet.set_available()
     return render_template(
         "animals/edit.html",
         title="Edit Animal",

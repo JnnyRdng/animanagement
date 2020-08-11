@@ -41,15 +41,12 @@
         <label for="vet_id">Assign vet:</label>
         <select name="vet_id" required>
           <option value="" selected disabled>Choose vet</option>
-          {% for vet in vets %}
-          <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
+          {% for vet in vets|sort(attribute="busy,last_name") %}
+          <option value="{{ vet.id }}" {% if vet.busy %}disabled{% endif %}>{{ vet.first_name }} {{ vet.last_name }}
+            {% if vet.busy %}&lt;Busy&gt;{% endif %}</option>
           {% endfor %}
         </select>
       </li>
-      <!-- <li>
-        <label for="date_registered">Date registered:</label>
-        <input type="text" name="date_registered" placeholder="yyyy-mm-dd" required>
-      </li> -->
       <li>
         <label for="checked_in">Check in?</label>
         <input type="checkbox" name="checked_in" checked>

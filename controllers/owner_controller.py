@@ -14,7 +14,6 @@ search = False
 @owner_blueprint.route("/owners")
 def index():
     global search
-    owners = []
     results = []
     search_term = False
     owners = owner_repository.select_all()

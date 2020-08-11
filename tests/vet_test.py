@@ -42,3 +42,21 @@ class TestVet(unittest.TestCase):
         expected = 6
         actual = self.vet.animal_count
         self.assertEqual(expected, actual)
+
+    def test_vet_busy(self):
+        expected = False
+        actual = self.vet.busy
+        self.assertEqual(expected, actual)
+
+    def test_set_vet_busy(self):
+        self.vet.set_busy()
+        expected = True
+        actual = self.vet.busy
+        self.assertEqual(expected, actual)
+
+    def test_set_vet_available(self):
+        self.vet.set_busy()
+        self.vet.set_available()
+        expected = False
+        actual = self.vet.busy
+        self.assertEqual(expected, actual)

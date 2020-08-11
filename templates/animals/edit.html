@@ -37,9 +37,10 @@
       <li>
         <label for="vet_id">Assign vet:</label>
         <select name="vet_id" required>
-          {% for vet in vets %}
-          <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>{{ vet.first_name }}
-            {{ vet.last_name }}</option>
+          {% for vet in vets|sort(attribute="busy,last_name") %}
+          <option value="{{ vet.id }}" {% if vet.busy %}disabled{% endif %} {% if vet.id == animal.vet.id %} selected
+            {% endif %}>{{ vet.first_name }}
+            {{ vet.last_name }} {% if vet.busy %}&lt;Busy&gt;{% endif %}</option>
           {% endfor %}
         </select>
       </li>
