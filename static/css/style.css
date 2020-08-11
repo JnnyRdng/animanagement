@@ -179,6 +179,8 @@ body>footer {
 
 .delete:hover {
     background-color: red;
-    input {
-        font-family: phoreuscherokee, serif;
-    }
+}
+
+input {
+    font-family: phoreuscherokee, serif;
+}
