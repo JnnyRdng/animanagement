@@ -17,7 +17,7 @@
       <input type="hidden" value="search">
       <input list="animal_names" name="animal_name">
       <datalist id="animal_names">
-        {% for animal in animals %}
+        {% for animal in animals|sort(attribute="name") %}
         <option value="{{ animal.name }}">{{ animal.name }}</option>
         {% endfor %}
       </datalist>

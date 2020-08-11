@@ -111,7 +111,7 @@ body>main {
 }
 
 .sidebar {
-    background-color: var(--sidebar);
+    background-color: var(--terra-cotta);
 }
 
 .sidebar>nav>ul {
