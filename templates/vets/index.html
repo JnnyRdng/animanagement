@@ -3,11 +3,34 @@
 
 {% block content %}
 <article class="show-all">
-  {% if admitted != undefined %}
-  <h2>Available vets</h2>
-  {% else %}
-  <h2>All vets</h2>
+  <header>
+    {% if search %}
+    {% if results|length %}
+    <h2>Vets - Search results</h2>
+    {% else %}
+    <h2>All vets - No results found</h2>
+    {% endif %}
+    {% else %}
+    <h2>All vets</h2>
+    {% endif %}
+    <form action="/vets/search" method="post">
+      <input type="hidden" value="search">
+      <label for="vet_name">Search: </label>
+      <input type="text" list="vet_names" name="vet_name" placeholder="Vet name"
+        value="{% if search %}{{ search }}{% endif %}">
+      <datalist id="vet_names">
+        {% for vet in vets|sort(attribute="last_name") %}
+        <option value="{{ vet.first_name }} {{ vet.last_name }}">{{ vet.first_name}} {{ vet.last_name }}
+        </option>
+        {% endfor %}
+      </datalist>
+      <input type="submit" value="Go">
+    </form>
+  </header>
+  {% if results|length %}
+  {% set vets = results %}
   {% endif %}
+
   {% for vet in vets|sort(attribute="last_name") %}
   <section class="vet-card">
     <main>

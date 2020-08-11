@@ -5,13 +5,35 @@ import repositories.vet_repository as vet_repository
 import repositories.animal_repository as animal_repository
 
 vet_blueprint = Blueprint("vets", __name__)
+search = False
 
 # index
 # /vets GET
 @vet_blueprint.route("/vets")
 def index():
+    global search
+    results = []
+    search_term = False
     vets = vet_repository.select_all()
-    return render_template("/vets/index.html", title="Vets", vets=vets)
+    if search:
+        results = [
+            vet
+            for vet in vets
+            if search.lower() in f"{vet.first_name.lower()} {vet.last_name.lower()}"
+        ]
+        search_term = search
+        search = False
+
+    return render_template(
+        "/vets/index.html", title="Vets", vets=vets, results=results, search=search_term
+    )
+
+
+@vet_blueprint.route("/vets/search", methods=["POST"])
+def search_results():
+    global search
+    search = request.form["vet_name"]
+    return redirect("/vets")
 
 
 # show
