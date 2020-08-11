@@ -26,3 +26,8 @@ class TestVet(unittest.TestCase):
         expected = 100
         actual = self.vet.id
         self.assertEqual(expected, actual)
+
+    def test_max_animals_is_5(self):
+        expected = 5
+        actual = self.vet.max_animals
+        self.assertEqual(expected, actual)
