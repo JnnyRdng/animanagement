@@ -3,10 +3,32 @@
 
 {% block content %}
 <article class="show-all">
-  {% if admitted != undefined %}
-  <h2>Available owners</h2>
-  {% else %}
-  <h2>All owners</h2>
+  <header>
+    {% if search %}
+    {% if results|length %}
+    <h2>Owners - Search results</h2>
+    {% else %}
+    <h2>All owners - No results found</h2>
+    {% endif %}
+    {% else %}
+    <h2>All owners</h2>
+    {% endif %}
+    <form action="/owners/search" method="post">
+      <input type="hidden" value="search">
+      <label for="owner_name">Search: </label>
+      <input type="text" list="owner_names" name="owner_name" placeholder="Owner name"
+        value="{% if search %}{{ search }}{% endif %}">
+      <datalist id="owner_names">
+        {% for owner in owners|sort(attribute="last_name") %}
+        <option value="{{ owner.first_name }} {{ owner.last_name }}">{{ owner.first_name}} {{ owner.last_name }}
+        </option>
+        {% endfor %}
+      </datalist>
+      <input type="submit" value="Go">
+    </form>
+  </header>
+  {% if results|length %}
+  {% set owners = results %}
   {% endif %}
   {% for owner in owners|sort(attribute="last_name") %}
   <section class="owner-card">

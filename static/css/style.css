@@ -163,6 +163,6 @@ body>footer {
     background-color: var(--blue-sapphire);
 }
 
-input[type=submit] {
+input {
     font-family: phoreuscherokee, serif;
 }

@@ -17,24 +17,21 @@ def index():
     global search
     animals = []
     results = []
+    search_term = False
+    animals = animal_repository.select_all()
     if search:
-        animals = animal_repository.select_all()
         results = [
             animal for animal in animals if search.lower() in animal.name.lower()
         ]
-        searched = search
+        search_term = search
         search = False
-        print(searched)
-    else:
-        searched = False
-        animals = animal_repository.select_all()
 
     return render_template(
         "animals/index.html",
         title="Animals",
         animals=animals,
         results=results,
-        search=searched,
+        search=search_term,
     )
 
 

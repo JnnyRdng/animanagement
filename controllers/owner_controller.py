@@ -7,13 +7,40 @@ import repositories.address_repository as address_repository
 import repositories.animal_repository as animal_repository
 
 owner_blueprint = Blueprint("owners", __name__)
+search = False
 
 # index
 # /owners GET
 @owner_blueprint.route("/owners")
 def index():
+    global search
+    owners = []
+    results = []
+    search_term = False
     owners = owner_repository.select_all()
-    return render_template("owners/index.html", title="Owners", owners=owners)
+    if search:
+        results = [
+            owner
+            for owner in owners
+            if search.lower() in f"{owner.first_name.lower()} {owner.last_name.lower()}"
+        ]
+        search_term = search
+        search = False
+
+    return render_template(
+        "owners/index.html",
+        title="Owners",
+        owners=owners,
+        results=results,
+        search=search_term,
+    )
+
+
+@owner_blueprint.route("/owners/search", methods=["POST"])
+def search_results():
+    global search
+    search = request.form["owner_name"]
+    return redirect("/owners")
 
 
 # show

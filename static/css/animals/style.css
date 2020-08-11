@@ -77,7 +77,3 @@ img {
     color: var(--seashell);
     background-color: var(--cg-red);
 }
-
-input {
-    font-family: phoreuscherokee, serif;
-}
