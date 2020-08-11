@@ -1,0 +1,75 @@
+{% extends 'treatments/base.html' %}
+{% set sidenav = "new" %}
+{% block page_css %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/form.css') }} ">
+{% endblock page_css %}
+
+{% block content %}
+<article class="form">
+  <header>
+    <a href="/animals/{{ animal.id }}">&lt; Back</a>
+    <h2>New</h2>
+  </header>
+  <form action="/treatments" method="post">
+    <ul>
+      <li>
+        <label for="description">Description: </label>
+        <input type="text" name="description" required>
+      </li>
+      <li class="timepicker">
+        <label for="duration">Duration: </label>
+        <label for="duration_days">Days: </label>
+        <select name="duration_days">
+          {% for n in range(0, 32) %}
+          <option value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+        <label for="duration_hours">Hours: </label>
+        <select name="duration_hours">
+          {% for n in range(0, 24) %}
+          <option value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+        <label for="duration_minutes">Minutes: </label>
+        <select name="duration_minutes">
+          {% for n in range(0, 60, 5) %}
+          <option value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+      </li>
+      <li class="timepicker">
+        <label for="recovery">Recovery: </label>
+        <label for="recovery_days">Days: </label>
+        <select name="recovery_days">
+          {% for n in range(0, 32) %}
+          <option value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+        <label for="recovery_hours">Hours: </label>
+        <select name="recovery_hours">
+          {% for n in range(0, 24) %}
+          <option value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+        <label for="recovery_minutes">Minutes: </label>
+        <select name="recovery_minutes">
+          {% for n in range(0, 60, 5) %}
+          <option value="{{n}}">{{ n }}</option>
+          {% endfor %}
+        </select>
+      </li>
+      <li>
+        <label for="cost">Cost (£): </label>
+        <input type="number" min="0.00" step="0.01" name="cost" required value="0.00">
+      </li>
+      <li>
+        <label for="display_animal">Animal:</label>
+        <input type="text" name="display_animal" value="{{ animal.name }}" disabled>
+        <input type="hidden" value="{{ animal.id }}" name="animal_id">
+      </li>
+    </ul>
+
+    <input type="submit">
+  </form>
+</article>
+{% endblock content %}

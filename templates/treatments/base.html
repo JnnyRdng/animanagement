@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/treatments/style.css') }}">
+{% block page_css %}
+
+{% endblock page_css %}
+{% endblock css %}
+
+
+{% block side_nav %}
+<nav class="side-nav">
+  <ul>
+    <!-- <li {% if sidenav == "new" %}class="active" {% endif %}><a href="/treatments/new">New treatment</a></li> -->
+  </ul>
+</nav>
+{% endblock side_nav %}
+
+
+{% block content %}
+
+{% endblock content %}

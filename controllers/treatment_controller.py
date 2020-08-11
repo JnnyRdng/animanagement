@@ -40,11 +40,12 @@ def create():
     minutes = request.form["recovery_minutes"]
     recovery = dh.time_delta(f"{days}:{hours}:{minutes}:00")
 
-    cost = request.form["cost"]
+    cost = int(request.form["cost"]) * 100
     animal = animal_repository.select(request.form["animal_id"])
     treatment = Treatment(description, duration, recovery, cost, animal)
     start = dh.now()
     treatment.start = start
+    print(treatment.__dict__)
     treatment_repository.save(treatment)
     return redirect(f"animals/{animal.id}")
 
@@ -70,7 +71,7 @@ def update(id):
     minutes = request.form["recovery_minutes"]
     recovery = dh.time_delta(f"{days}:{hours}:{minutes}:00")
 
-    cost = request.form["cost"]
+    cost = int(request.form["cost"]) * 100
     animal = animal_repository.select(request.form["animal_id"])
     treatment = Treatment(description, duration, recovery, cost, animal, id)
     if "start" in request.form:
