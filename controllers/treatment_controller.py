@@ -5,6 +5,7 @@ from models.treatment import Treatment
 from models.date_helper import DateHelper
 
 import repositories.treatment_repository as treatment_repository
+import repositories.owner_repository as owner_repository
 import repositories.animal_repository as animal_repository
 
 dh = DateHelper()
@@ -45,6 +46,8 @@ def create():
     treatment = Treatment(description, duration, recovery, cost, animal)
     treatment.start_treatment()
     treatment_repository.save(treatment)
+    animal.owner.increase_bill(treatment.cost)
+    owner_repository.update(animal.owner)
     return redirect(f"animals/{animal.id}")
 
 
@@ -78,12 +81,16 @@ def update(id):
 
     cost = int(float(request.form["cost"]) * 100)
     animal = animal_repository.select(request.form["animal_id"])
+    old_treatment = treatment_repository.select(animal)
+    animal.owner.decrease_bill(old_treatment.cost)
     treatment = Treatment(description, duration, recovery, cost, animal, id)
     if "start" in request.form:
         treatment.start_treatment()
     else:
-        start = treatment_repository.select(id).start
+        start = treatment_repository.select(animal).start
         treatment.start_treatment(start)
+    animal.owner.increase_bill(treatment.cost)
+    owner_repository.update(animal.owner)
     treatment_repository.update(treatment)
     return redirect(f"/animals/{animal.id}")
 

@@ -92,6 +92,7 @@ def edit(id):
 # /owners/<id> POST
 @owner_blueprint.route("/owners/<id>", methods=["POST"])
 def update(id):
+    owner = owner_repository.select(id)
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
     num = request.form["num"]
@@ -103,7 +104,7 @@ def update(id):
     address_repository.update(address)
     tel = request.form["tel"]
     email = request.form["email"]
-    owner = Owner(first_name, last_name, address, tel, email, id)
+    owner = Owner(first_name, last_name, address, tel, email, owner.bill, id)
     owner_repository.update(owner)
     return redirect(f"/owners/{id}")
 

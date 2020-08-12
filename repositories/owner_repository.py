@@ -25,6 +25,7 @@ def select(id):
             address,
             row["tel"],
             row["email"],
+            row["bill"],
             row["id"],
         )
     return owner
@@ -42,6 +43,7 @@ def select_all():
             address,
             row["tel"],
             row["email"],
+            row["bill"],
             row["id"],
         )
         owners.append(owner)
@@ -60,13 +62,14 @@ def delete_all():
 
 
 def update(owner):
-    sql = "UPDATE owners SET (first_name, last_name, address_id, tel, email) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE owners SET (first_name, last_name, address_id, tel, email, bill) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [
         owner.first_name,
         owner.last_name,
         owner.address.id,
         owner.tel,
         owner.email,
+        owner.bill,
         owner.id,
     ]
     run_sql(sql, values)
