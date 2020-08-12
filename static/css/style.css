@@ -23,7 +23,7 @@ body {
     margin: 0px;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    font-family: phoreuscherokee, "Knubi", serif;
+    font-family: phoreuscherokee, serif;
     font-weight: 400;
     font-style: normal;
     color: var(--raisin-black);

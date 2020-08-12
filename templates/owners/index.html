@@ -35,6 +35,7 @@
     <main>
       <img src="{{ url_for('static', filename='img/owner.png') }}">
       <h3>{{ owner.first_name }} {{ owner.last_name }}</h3>
+      <p>Total bill: <strong>£{{ '{:.2f}'.format(owner.bill / 100) }}</strong></p>
     </main>
     <footer>
       <a href="/owners/{{ owner.id }}">Show details</a>

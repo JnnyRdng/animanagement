@@ -38,7 +38,7 @@ img {
 
 .owner-card>main {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4fr 1fr;
     gap: 20px;
     align-items: center;
 }

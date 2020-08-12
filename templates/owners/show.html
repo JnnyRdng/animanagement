@@ -18,6 +18,7 @@
       <section>
         <p>Phone: {{ owner.tel }} </p>
         <p>Email: {{ owner.email }} </p>
+        <p>Total bill: <strong>£{{ '{:.2f}'.format(owner.bill / 100) }}</strong></p>
       </section>
     </aside>
     <a href="/owners/{{ owner.id }}/edit">Edit details</a>

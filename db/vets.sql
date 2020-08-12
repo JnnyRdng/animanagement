@@ -63,9 +63,9 @@ INSERT INTO addresses (num, street, city, postcode) VALUES ('17', 'Main Street',
 INSERT INTO addresses (num, street, city, postcode) VALUES ('887', 'Big Road', 'London', 'W8 5TT');
 INSERT INTO addresses (num, street, city, postcode) VALUES ('5', 'Side Road', 'Manchester', 'DC2 1BA');
 
-INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Kevin', 'Jones', 1, '07676 767676', 'kevin@email.com', 0);
-INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Steve', 'Baker', 2, '07762 919382', 'steve@email.com', 0);
-INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Michael', 'Martin', 3, '07626 172497', 'jeremy@email.com', 0);
+INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Kevin', 'Jones', 1, '07676 767676', 'kevin@email.com', 1500);
+INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Steve', 'Baker', 2, '07762 919382', 'steve@email.com', 1500);
+INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Michael', 'Martin', 3, '07626 172497', 'jeremy@email.com', 10100);
 
 INSERT INTO vets (first_name, last_name, max_animals) VALUES ('John', 'Smith', 3);
 INSERT INTO vets (first_name, last_name, max_animals) VALUES ('Linda', 'Bridges', 2);
@@ -80,11 +80,11 @@ INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registere
 INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Howard', '1965-01-12', 'Tortoise', 'Galapagos', 3, 3, '07-08-2020 10:14', true);
 INSERT INTO animals (name, dob, species, breed, owner_id, vet_id, date_registered, checked_in) VALUES ('Harambe', '1999-05-27', 'Gorilla', 'Western Lowland', 2, 5, '2016-05-28 08:58', false);
 
-INSERT INTO treatments (description, duration, recovery, cost, animal_id) VALUES ('Give medicine', '5 minutes', '10 minutes', 1000, 1);
-INSERT INTO treatments (description, duration, recovery, cost, animal_id) VALUES ('Pat head', '10 minutes', '20 minutes', 1500, 2);
-INSERT INTO treatments (description, duration, recovery, cost, animal_id) VALUES ('Feed leaves', '3 minutes', '1 hour', 500, 3);
-INSERT INTO treatments (description, duration, recovery, cost, animal_id) VALUES ('Flip back over', '15 minutes', '1 minutes', 10000, 4);
-INSERT INTO treatments (description, duration, recovery, cost, animal_id) VALUES ('Shoot with gun', '1 minutes', '10 days', 100, 5);
+INSERT INTO treatments (description, start, duration, recovery, cost, animal_id) VALUES ('Give medicine', Now(), '5 minutes', '10 minutes', 1000, 1);
+INSERT INTO treatments (description, start, duration, recovery, cost, animal_id) VALUES ('Pat head', Now(), '10 minutes', '20 minutes', 1500, 2);
+INSERT INTO treatments (description, start, duration, recovery, cost, animal_id) VALUES ('Feed leaves', Now(), '3 minutes', '1 hour', 500, 3);
+INSERT INTO treatments (description, start, duration, recovery, cost, animal_id) VALUES ('Compare to actual stick', Now(), '15 minutes', '1 minutes', 10000, 4);
+INSERT INTO treatments (description, start, duration, recovery, cost, animal_id) VALUES ('Stuck on back, flip him over', Now(), '0 minutes', '10 days', 100, 5);
 
 INSERT INTO records (date, entry, animal_id) VALUES ('2020-08-07 10:29:50', 'Cat is sick', 1);
 INSERT INTO records (date, entry, animal_id) VALUES ('2020-08-08 14:11:01', 'Cat is still sick', 1);
