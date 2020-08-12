@@ -63,9 +63,9 @@ INSERT INTO addresses (num, street, city, postcode) VALUES ('17', 'Main Street',
 INSERT INTO addresses (num, street, city, postcode) VALUES ('887', 'Big Road', 'London', 'W8 5TT');
 INSERT INTO addresses (num, street, city, postcode) VALUES ('5', 'Side Road', 'Manchester', 'DC2 1BA');
 
-INSERT INTO owners (first_name, last_name, address_id, tel, email) VALUES ('Kevin', 'Jones', 1, '07676 767676', 'kevin@email.com');
-INSERT INTO owners (first_name, last_name, address_id, tel, email) VALUES ('Steve', 'Baker', 2, '07762 919382', 'steve@email.com');
-INSERT INTO owners (first_name, last_name, address_id, tel, email) VALUES ('Michael', 'Martin', 3, '07626 172497', 'jeremy@email.com');
+INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Kevin', 'Jones', 1, '07676 767676', 'kevin@email.com', 0);
+INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Steve', 'Baker', 2, '07762 919382', 'steve@email.com', 0);
+INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES ('Michael', 'Martin', 3, '07626 172497', 'jeremy@email.com', 0);
 
 INSERT INTO vets (first_name, last_name, max_animals) VALUES ('John', 'Smith', 3);
 INSERT INTO vets (first_name, last_name, max_animals) VALUES ('Linda', 'Bridges', 2);
