@@ -49,9 +49,6 @@
         <input type="datetime-local" name="date_registered" placeholder="yyyy-mm-dd" required
           value="{{ animal.print_registered('print_datetime_local') }}">
       </li>
-      <li>
-        <label for="checked_in">Checked in?</label>
-        <input type="checkbox" name="checked_in" {% if animal.checked_in %} checked {% endif %}>
     </ul>
     <input type="submit">
   </form>

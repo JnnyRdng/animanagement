@@ -6,8 +6,15 @@ import repositories.address_repository as address_repository
 
 
 def save(owner):
-    sql = "INSERT INTO owners (first_name, last_name, tel, email) VALUES (%s, %s, %s, %s) RETURNING id"
-    values = [owner.first_name, owner.last_name, owner.tel, owner.email]
+    sql = "INSERT INTO owners (first_name, last_name, address_id, tel, email, bill) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
+    values = [
+        owner.first_name,
+        owner.last_name,
+        owner.address.id,
+        owner.tel,
+        owner.email,
+        owner.bill,
+    ]
     id = run_sql(sql, values)[0]["id"]
     owner.id = id
 

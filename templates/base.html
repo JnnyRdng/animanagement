@@ -15,8 +15,11 @@
 
 <body>
   <header>
-    <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Vet Surgery Logo">
-    <h1>Animanagement</h1>
+    <a href="/" alt="Home"><img id="logo" src="{{ url_for('static', filename='img/logo.png') }}"
+        alt="Vet Surgery Logo"></a>
+    <a href="" /"" alt="Home">
+      <h1>Animanagement</h1>
+    </a>
     <nav class="navigation">
       <ul>
         <li {% if active_page == "home" %}class="active" {% endif %}><a href="/">Home</a></li>
