@@ -93,3 +93,18 @@ img {
 .recovery {
     background-color: var(--june-bud);
 }
+
+#key {
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+
+#treatment_key>ul {
+    list-style: none;
+    padding: 0px;
+}
+
+#treatment_key>ul>li {
+    margin: 4px;
+}

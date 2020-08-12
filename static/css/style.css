@@ -122,6 +122,8 @@ body>main {
 
 .sidebar {
     background-color: var(--terra-cotta);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .sidebar>nav>ul {

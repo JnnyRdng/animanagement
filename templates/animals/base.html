@@ -19,6 +19,17 @@
     <li {% if sidenav == "new" %}class="active" {% endif %}><a href="/animals/new">Register Animal</a></li>
   </ul>
 </nav>
+<section></section>
+{% if show_key %}
+<aside id="treatment_key">
+  <ul>
+    <li><span id="key"><strong>Key:</strong></span></li>
+    <li><span class="checked-in treatment">✓ In treatment</span></li>
+    <li><span class="checked-in recovery">💤 In recovery</span></li>
+    <li><span class="checked-out">✕ Not in treatment</span></li>
+  </ul>
+</aside>
+{% endif %}
 {% endblock side_nav %}
 
 
