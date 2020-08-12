@@ -63,7 +63,10 @@
         <p>Recovery will finish at: {{ treatment.print_recovery() }}</p>
       </aside>
     </main>
-    <footer><a class="delete" href="/treatments/{{ animal.id }}/delete">Cancel treatment</a></footer>
+    <footer>
+      <a href="/treatments/{{ animal.id }}/edit">Edit treatment</a>
+      <a class="delete" href="/treatments/{{ animal.id }}/delete">Cancel treatment</a>
+    </footer>
   </section>
   {% endif %}
   <section id="records">

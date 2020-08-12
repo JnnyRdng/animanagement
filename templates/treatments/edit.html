@@ -6,7 +6,7 @@
 {% block content %}
 <article class="form">
   <header>
-    <a href="/animals/{{ treatment.id }}">&lt; Back</a>
+    <a href="/animals/{{ treatment.animal.id }}">&lt; Back</a>
     <h2>Edit</h2>
   </header>
   <form action="/treatments/{{ treatment.id }}" method="post">
