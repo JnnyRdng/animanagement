@@ -21,18 +21,17 @@ class Treatment:
 
     def total(self, duration):
         dh = DateHelper()
-        list = dh.list_delta(duration)
+        times = dh.list_delta(duration)
         string = ""
-        if list[0] > 0:
-            string += f"{list[0]} days"
-        if list[1] > 0:
+        if times[0] > 0:
+            string += f"{times[0]} days"
+        if times[1] > 0:
             if string != "":
                 string += ", "
-            string += f"{list[1]} hours"
-        if list[2] > 0:
-            if string != "":
-                string += ", "
-            string += f"{list[2]} minutes"
+            string += f"{times[1]} hrs"
+        if string != "":
+            string += ", "
+        string += f"{times[2]} mins"
         return string
 
     def print_start(self):

@@ -159,13 +159,3 @@ def delete(id):
     animal_repository.delete(id)
     return redirect("/animals")
 
-
-# check_out
-# /animals/<id>/checkout POST
-@animal_blueprint.route("/animals/<id>/checkout")
-def checkout(id):
-    animal = animal_repository.select(id)
-    animal.check_out()
-    animal_repository.update(animal)
-    return redirect(f"/animals/{id}")
-
