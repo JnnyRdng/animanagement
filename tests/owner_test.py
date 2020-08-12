@@ -41,21 +41,22 @@ class TestOwner(unittest.TestCase):
         actual = self.owner.id
         self.assertEqual(expected, actual)
 
-    def test_owner_has_num_animals(self):
+    def test_owner_has_bill(self):
         expected = 0
-        actual = self.owner.animals
+        actual = self.owner.bill
         self.assertEqual(expected, actual)
 
-    def test_set_num_animals(self):
-        self.owner.set_animals(4)
-        expected = 4
-        actual = self.owner.animals
+    def test_owner_increase_bill(self):
+        self.owner.increase_bill(50)
+        expected = 50
+        actual = self.owner.bill
         self.assertEqual(expected, actual)
 
-    def test_set_num_animals_different_number(self):
-        self.owner.set_animals(8)
-        expected = 8
-        actual = self.owner.animals
+    def test_owner_decrease_bill(self):
+        self.owner.increase_bill(100)
+        self.owner.decrease_bill(23)
+        expected = 77
+        actual = self.owner.bill
         self.assertEqual(expected, actual)
 
     def test_owner_address(self):

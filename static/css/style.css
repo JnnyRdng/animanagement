@@ -42,7 +42,11 @@ body>header {
     text-align: center;
 }
 
-body>header>h1 {
+body>header>a {
+    text-decoration: none;
+}
+
+body>header>a>h1 {
     text-align: left;
     color: var(--seashell)
 }
@@ -167,8 +171,59 @@ body>main>article {
     overflow-y: auto;
 }
 
+#home {
+    margin: 20px;
+    text-align: center;
+}
+
+#home>main {
+    margin: 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+#home>main>a {
+    display: block;
+    padding: 30px;
+    background-color: var(--blue-sapphire);
+    width: 80%;
+    margin: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--seashell);
+}
+
+#home>main>a:hover {
+    display: block;
+    padding: 30px;
+    background-color: var(--raisin-black);
+    width: 80%;
+}
+
 body>footer {
     background-color: var(--blue-sapphire);
+}
+
+.footer-nav>ul {
+    display: grid;
+    grid-template-columns: auto auto auto auto 2fr;
+    gap: 40px;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.footer-nav>ul>li {
+    text-align: center;
+}
+
+.footer-nav>ul>li>a {
+    color: var(--snow);
+    text-decoration: none;
+}
+
+.footer-nav>ul>li>a:hover {
+    text-decoration: underline;
 }
 
 .delete {

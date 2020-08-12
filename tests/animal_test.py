@@ -62,40 +62,9 @@ class TestAnimal(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_checked_in_default(self):
-        expected = True
-        actual = self.animal.checked_in
-        self.assertEqual(expected, actual)
-
-    def test_checked_out(self):
-        self.animal.check_out()
         expected = False
         actual = self.animal.checked_in
         self.assertEqual(expected, actual)
-
-    def test_checked_out_returns_True(self):
-        expected = True
-        actual = self.animal.check_out()
-        self.assertEqual(expected, actual)
-
-    def test_animal_already_checked_out_returns_None(self):
-        self.animal.check_out()
-        actual = self.animal.check_out()
-        self.assertIsNone(actual)
-
-    def test_checked_in(self):
-        self.animal.check_in()
-        expected = True
-        actual = self.animal.checked_in
-        self.assertEqual(expected, actual)
-
-    def test_checked_in_returns_True(self):
-        actual = self.animal.check_in()
-        self.assertIsNone(actual)
-
-    def test_animal_already_checked_in_returns_None(self):
-        self.animal.check_in()
-        actual = self.animal.check_in()
-        self.assertIsNone(actual)
 
     def test_animal_has_None_id(self):
         actual = self.animal.id
